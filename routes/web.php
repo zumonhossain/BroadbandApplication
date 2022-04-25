@@ -34,11 +34,11 @@ Route::group(['prefix'=>'admin'], function(){
 
 
     //Banner routes
-    Route::get('banner/new-banner-form', BannerInfoController::class, 'addNewBannerInfoForm')->name('banner_new_form');
-    Route::post('banner/insert-banner-form', BannerInfoController::class, 'insertBannerInfoFormSubmit')->name('banner_insert_form');
-    Route::post('banner/edit-banner/{id}', BannerInfoController::class, 'editBannerInfoForm')->name('banner_edit_form');
-    Route::post('banner/update-banner', BannerInfoController::class, 'updateBannerInfoFormSubmit')->name('banner_update_form');
-    Route::post('banner/delete-banner', BannerInfoController::class, 'deleteBannerInformationFormSubmit')->name('banner_delete_form');
+    Route::get('banner/new-banner-form', [BannerInfoController::class, 'addNewBannerInfoForm'])->name('banner_new_form');
+    Route::post('banner/insert-banner-form', [BannerInfoController::class, 'insertBannerInfoFormSubmit'])->name('banner_insert_form');
+    Route::get('banner/edit-banner/{id}', [BannerInfoController::class, 'editBannerInfoForm'])->name('banner_edit_form');
+    Route::post('banner/update-banner', [BannerInfoController::class, 'updateBannerInfoFormSubmit'])->name('banner_update_form');
+    Route::post('banner/delete-banner', [BannerInfoController::class, 'deleteBannerInformationFormSubmit'])->name('banner_delete_form');
 
 });
 

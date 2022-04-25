@@ -11,4 +11,23 @@ class CompanyInfoService extends Controller{
     public function __construct(){
         $this->middleware('auth');
     }
+
+    public function insertBannerInformation($banner_name, $banner_title, $banner_subtitle, $banner_url){
+        return BannerInfo::insertGetId([
+            'name'=>$banner_name,
+            'title'=>$banner_title,
+            'subtitle'=>$banner_subtitle,
+            'url'=>$banner_url,
+            'created_at'=>Carbon::now()->toDateTimeString()
+        ]);
+    }
+    public function getBannerInformation(){
+        
+    }
+    public function updateBannerInformation(){
+        
+    }
+    public function deleteBannerInformation(){
+        
+    }
 }

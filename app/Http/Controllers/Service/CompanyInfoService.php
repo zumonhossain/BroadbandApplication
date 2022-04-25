@@ -14,10 +14,10 @@ class CompanyInfoService extends Controller{
 
     public function insertBannerInformation($banner_name, $banner_title, $banner_subtitle, $banner_url){
         return BannerInfo::insertGetId([
-            'name'=>$banner_name,
-            'title'=>$banner_title,
-            'subtitle'=>$banner_subtitle,
-            'url'=>$banner_url,
+            'banner_name'=>$banner_name,
+            'banner_title'=>$banner_title,
+            'banner_subtitle'=>$banner_subtitle,
+            'banner_url'=>$banner_url,
             'created_at'=>Carbon::now()->toDateTimeString()
         ]);
     }

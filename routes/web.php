@@ -32,7 +32,6 @@ Route::group(['prefix'=>'admin'], function(){
     // Admin Routes
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin');
 
-
     //Banner routes
     Route::get('banner/new-banner-form', [BannerInfoController::class, 'addNewBannerInfoForm'])->name('banner_new_form');
     Route::post('banner/insert-banner-form', [BannerInfoController::class, 'insertBannerInfoFormSubmit'])->name('banner_insert_form');

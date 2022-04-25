@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Admin Dashboard
+@endsection
 @section('content')
     <div class="card-group print_none">
         <div class="card">

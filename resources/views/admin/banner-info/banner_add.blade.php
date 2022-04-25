@@ -86,7 +86,7 @@
                                     <td>{{ $aBanner->banner_url }}</td>
                                     <td>
                                         <a class="btn-info edit-icon" href="{{ route('banner_edit_form',$aBanner->banner_id) }}"><i class="mdi mdi-table-edit"></i></a>
-                                        <a class="btn-danger delete-icon" id="softDelete" data-toggle="modal" data-target="#softDelModal" data-id="#" href="#"><i class="mdi mdi-delete"></i></a>
+                                        <a class="btn-danger delete-icon" id="softDelete" data-toggle="modal" data-target="#softDelModal" data-id="{{ $aBanner->banner_id }}" href="#"><i class="mdi mdi-delete"></i></a>
                                     </td>
                                 </tr>
                             @endforeach

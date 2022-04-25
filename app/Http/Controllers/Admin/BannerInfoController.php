@@ -72,4 +72,16 @@ class BannerInfoController extends Controller{
 
         return redirect()->route('banner_new_form')->with($notification);
     }
+
+    public function deleteBannerInformationFormSubmit(Request $request){
+        $id = $request['modal_id'];
+
+        (new CompanyInfoService())->deleteBannerInformation($id);
+
+        $notification = array(
+            'messege' => 'Banner Delete Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

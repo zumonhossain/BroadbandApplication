@@ -42,8 +42,10 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
-    public function deleteBannerInformation(){
-        
+    public function deleteBannerInformation($id){
+        return BannerInfo::where('banner_id',$id)->update([
+            'banner_status'=>0
+        ]);
     }
 
 

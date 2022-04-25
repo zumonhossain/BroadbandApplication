@@ -28,7 +28,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
 
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{url('admin')}}">
+                    <a class="navbar-brand" href="{{ route('admin') }}">
                         <b>
                             <img src="{{ asset('contents/admin') }}/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
                             <img src="{{ asset('contents/admin') }}/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
@@ -99,6 +99,9 @@
                         <li class="nav-devider"></li>
                         <li>
                             <a class="waves-effect waves-dark" href="{{ route('admin') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+                        <li>
+                            <a class="waves-effect waves-dark" href="{{ route('banner_new_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Banner</span></a>
                         </li>
                         <li>
                             <a class="waves-effect waves-dark" href="{{ url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i><span class="hide-menu">Logout</span></a>

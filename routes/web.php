@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +26,21 @@ Route::get('/dashboard', function () {
 
 
 
+// ================= Admin Routes ======================
+Route::group(['prefix'=>'admin'], function(){
 
-// Admin Routes
-Route::get('admin', [AdminController::class, 'index'])->name('admin');
+    // Admin Routes
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin');
 
 
+    //Banner routes
+    Route::get('banner/new-banner-form', BannerInfoController::class, 'addNewBannerInfoForm')->name('banner_new_form');
+    Route::post('banner/insert-banner-form', BannerInfoController::class, 'insertBannerInfoFormSubmit')->name('banner_insert_form');
+    Route::post('banner/edit-banner/{id}', BannerInfoController::class, 'editBannerInfoForm')->name('banner_edit_form');
+    Route::post('banner/update-banner', BannerInfoController::class, 'updateBannerInfoFormSubmit')->name('banner_update_form');
+    Route::post('banner/delete-banner', BannerInfoController::class, 'deleteBannerInformationFormSubmit')->name('banner_delete_form');
 
-
+});
 
 
 

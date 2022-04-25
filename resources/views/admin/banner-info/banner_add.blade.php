@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Banner Add
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12">
@@ -75,16 +78,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($banners as $aBanner)
                                 <tr>
-                                    <td>..</td>
-                                    <td>..</td>
-                                    <td>..</td>
-                                    <td>..</td>
+                                    <td>{{ $aBanner->banner_name }}</td>
+                                    <td>{{ $aBanner->banner_title }}</td>
+                                    <td>{{ $aBanner->banner_subtitle }}</td>
+                                    <td>{{ $aBanner->banner_url }}</td>
                                     <td>
-                                        <a class="btn-info edit-icon" href="#"><i class="mdi mdi-table-edit"></i></a>
+                                        <a class="btn-info edit-icon" href="{{ route('banner_edit_form',$aBanner->banner_id) }}"><i class="mdi mdi-table-edit"></i></a>
                                         <a class="btn-danger delete-icon" id="softDelete" data-toggle="modal" data-target="#softDelModal" data-id="#" href="#"><i class="mdi mdi-delete"></i></a>
                                     </td>
                                 </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

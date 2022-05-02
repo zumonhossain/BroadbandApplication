@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Service;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BannerInfo;
+use App\Models\CompanyInfo;
 use Carbon\Carbon;
 
 class CompanyInfoService extends Controller{
@@ -48,7 +49,73 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    // Company Info
+    public function getCompanyProfileInformation(){
+        return CompanyInfo::where('company_profile_id', 1)->firstOrFail();
+    }
 
+    public function insertCompanyProfileInformation($com_name_bangla, $com_name_english, $company_title, $company_sub_title, $address, $owner_name1, $owner_name2, $mobile_no1, $mobile_no2, $email1,$email2, $support_mobile_number, $description, $company_mission, $company_vission, $web_address, $trade_license, $iSP_license, $extra1, $extra2, $extra3){
+
+        return CompanyInfo::insertGetId([
+            'com_name_bangla' => $com_name_bangla,
+            'com_name_english' => $com_name_english,
+            'company_title' => $company_title,
+            'company_sub_title' => $company_sub_title,
+            'address' => $address,
+            'owner_name1' => $owner_name1,
+            'owner_name2' => $owner_name2,
+            'mobile_no1' => $mobile_no1,
+            'mobile_no2' => $mobile_no2,
+            'email1' => $email1,
+            'email2' => $email2,
+            'support_mobile_number' => $support_mobile_number,
+            'description' => $description,
+            'company_mission' => $company_mission,
+            'company_vission' => $company_vission,
+            'web_address' => $web_address,
+            'trade_license' => $trade_license,
+            'iSP_license' => $iSP_license,
+            'extra1' => $extra1,
+            'extra2' => $extra2,
+            'extra3' => $extra3,
+            'created_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
+    public function updateCompanyProfileInformation($id, $com_name_bangla, $com_name_english, $company_title, $company_sub_title, $address, $owner_name1, $owner_name2, $mobile_no1, $mobile_no2, $email1, $email2, $support_mobile_number, $description, $company_mission, $company_vission, $web_address, $trade_license, $iSP_license, $extra1, $extra2, $extra3)
+    {
+        return CompanyInfo::where('company_profile_id', $id)->update([
+            'com_name_bangla' => $com_name_bangla,
+            'com_name_english' => $com_name_english,
+            'company_title' => $company_title,
+            'company_sub_title' => $company_sub_title,
+            'address' => $address,
+            'owner_name1' => $owner_name1,
+            'owner_name2' => $owner_name2,
+            'mobile_no1' => $mobile_no1,
+            'mobile_no2' => $mobile_no2,
+            'email1' => $email1,
+            'email2' => $email2,
+            'support_mobile_number' => $support_mobile_number,
+            'description' => $description,
+            'company_mission' => $company_mission,
+            'company_vission' => $company_vission,
+            'web_address' => $web_address,
+            'trade_license' => $trade_license,
+            'iSP_license' => $iSP_license,
+            'extra1' => $extra1,
+            'extra2' => $extra2,
+            'extra3' => $extra3,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
+    public function updateCompanyUploadFileDBPath($columnName, $filePath){
+        CompanyInfo::where('company_profile_id', 1)->update([
+            $columnName => $filePath,
+        ]);
+        //OwnerPhoto1
+    }
 
 
 

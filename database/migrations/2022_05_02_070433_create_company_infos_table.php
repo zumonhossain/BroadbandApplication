@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('company_infos', function (Blueprint $table) {
-            $table->id('companyProfileId');
+            $table->id('company_profile_id');
             $table->string('com_name_bangla');
-            $table->string('com_name_enlish');
+            $table->string('com_name_english');
             $table->string('company_title')->nullable();
             $table->string('company_sub_title')->nullable();
             $table->string('address');

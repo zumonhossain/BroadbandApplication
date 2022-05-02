@@ -101,6 +101,9 @@
                             <a class="waves-effect waves-dark" href="{{ route('admin') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Dashboard</span></a>
                         </li>
                         <li>
+                            <a class="waves-effect waves-dark" href="{{ route('company_profile_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Company Profile</span></a>
+                        </li>
+                        <li>
                             <a class="waves-effect waves-dark" href="{{ route('banner_new_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Banner</span></a>
                         </li>
                         <li>

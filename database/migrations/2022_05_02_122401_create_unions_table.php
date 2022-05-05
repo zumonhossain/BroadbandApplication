@@ -20,6 +20,9 @@ return new class extends Migration
             $table->integer('upazila_id');
             $table->string('union_name',100);
             $table->boolean('union_status')->default(1);
+            $table->foreign('division_id')->references('union_id')->on('divisions')->onDelete('cascade');
+            $table->foreign('district_id')->references('union_id')->on('districts')->onDelete('cascade');
+            $table->foreign('upazila_id')->references('union_id')->on('upazilas')->onDelete('cascade');
             $table->timestamps();
         });
     }

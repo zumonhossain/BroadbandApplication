@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('district_id');
             $table->string('upazila_name',100);
             $table->boolean('upazila_status')->default(1);
+            $table->foreign('division_id')->references('upazila_id')->on('divisions')->onDelete('cascade');
+            $table->foreign('district_id')->references('upazila_id')->on('districts')->onDelete('cascade');
             $table->timestamps();
         });
     }

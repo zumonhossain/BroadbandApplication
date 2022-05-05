@@ -19,6 +19,19 @@ return new class extends Migration
             $table->boolean('service_status')->default(1);
             $table->timestamps();
         });
+
+
+        DB::table('service_types')->insert(
+            array(
+                'service_name' => 'Internet Service'
+            )
+        );
+
+        DB::table('service_types')->insert(
+            array(
+                'service_name' => 'Dish Cable Service'
+            )
+        );
     }
 
     /**

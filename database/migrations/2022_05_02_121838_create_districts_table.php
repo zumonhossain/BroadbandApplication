@@ -18,7 +18,6 @@ return new class extends Migration
             $table->integer('division_id');
             $table->string('district_name',100);
             $table->boolean('district_status')->default(1);
-            $table->foreign('division_id')->references('district_id')->on('divisions')->onDelete('cascade');
             $table->timestamps();
         });
     }

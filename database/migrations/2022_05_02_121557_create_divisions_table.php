@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('divisions', function (Blueprint $table) {
             $table->bigIncrements('division_id');
-            $table->string('division_name');
+            $table->string('division_name',100);
             $table->boolean('division_status')->default(1);
             $table->timestamps();
         });

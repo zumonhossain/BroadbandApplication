@@ -120,7 +120,11 @@ class CompanyInfoService extends Controller{
 
     //Service Type
     public function getServiceTypeInformation($id){
-        
+        if($id == null){
+            return ServiceType::all();
+        }else{
+            return ServiceType::where('service_type_id',$id)->first();
+        }
     }
 
     public function insertServiceTypeInformation($service_name){

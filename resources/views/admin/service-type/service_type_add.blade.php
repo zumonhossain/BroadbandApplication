@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('title')
+    Service Type Add
+@endforeach
 @section('content')
     <div class="row">
         <div class="col-lg-12">

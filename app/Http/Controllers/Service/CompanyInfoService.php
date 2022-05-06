@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\BannerInfo;
 use App\Models\CompanyInfo;
+use App\Models\ServiceType;
 use Carbon\Carbon;
 
 class CompanyInfoService extends Controller{
@@ -82,8 +83,7 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
-    public function updateCompanyProfileInformation($id, $com_name_bangla, $com_name_english, $company_title, $company_sub_title, $address, $owner_name1, $owner_name2, $mobile_no1, $mobile_no2, $email1, $email2, $support_mobile_number, $description, $company_mission, $company_vission, $web_address, $trade_license, $iSP_license, $extra1, $extra2, $extra3)
-    {
+    public function updateCompanyProfileInformation($id, $com_name_bangla, $com_name_english, $company_title, $company_sub_title, $address, $owner_name1, $owner_name2, $mobile_no1, $mobile_no2, $email1, $email2, $support_mobile_number, $description, $company_mission, $company_vission, $web_address, $trade_license, $iSP_license, $extra1, $extra2, $extra3){
         return CompanyInfo::where('company_profile_id', $id)->update([
             'com_name_bangla' => $com_name_bangla,
             'com_name_english' => $com_name_english,
@@ -116,6 +116,28 @@ class CompanyInfoService extends Controller{
         ]);
         //OwnerPhoto1
     }
+
+
+    //Service Type
+    public function getServiceTypeInformation($id){
+        
+    }
+
+    public function insertServiceTypeInformation($service_name){
+        return ServiceType::insertGetId([
+            'service_name' => $service_name,
+            'created_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
+    public function updateServiceTypeInformation($id, $service_name){
+        
+    }
+
+    public function deleteServiceTypeInformation($id){
+        
+    }
+
 
 
 

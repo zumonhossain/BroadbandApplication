@@ -142,7 +142,7 @@ class CompanyInfoService extends Controller{
     }
 
     public function deleteServiceTypeInformation($id){
-        
+        return ServiceType::where('service_type_id', $id)->delete();
     }
 
 

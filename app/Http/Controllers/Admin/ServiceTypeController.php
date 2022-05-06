@@ -61,6 +61,14 @@ class ServiceTypeController extends Controller{
     }
 
     public function deleteServiceTypeInfoFormSubmit(Request $request){
-        
+        $id = $request['modal_id'];
+
+        (new CompanyInfoService())->deleteServiceTypeInformation($id);
+
+        $notification=array(
+            'messege'=>'Service Type Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

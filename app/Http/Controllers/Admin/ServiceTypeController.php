@@ -41,7 +41,23 @@ class ServiceTypeController extends Controller{
     }
 
     public function updateServiceTypeInfoFormSubmit(Request $request){
-        
+        $this->validate($request, [
+            'service_name' => 'required',
+        ],[
+            'service_name.required' => 'Please enter service name!',
+        ]);
+
+        (new CompanyInfoService())
+            ->updateServiceTypeInformation(
+            $request['service_type_id'],
+            $request['service_name'],
+        );
+
+        $notification=array(
+            'messege'=>'Service Type Update Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->route('service_type_new_form')->with($notification);
     }
 
     public function deleteServiceTypeInfoFormSubmit(Request $request){

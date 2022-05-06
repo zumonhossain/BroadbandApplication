@@ -135,7 +135,10 @@ class CompanyInfoService extends Controller{
     }
 
     public function updateServiceTypeInformation($id, $service_name){
-        
+        return ServiceType::where('service_type_id', $id)->update([
+            'service_name' => $service_name,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
     }
 
     public function deleteServiceTypeInformation($id){

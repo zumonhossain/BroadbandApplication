@@ -17,7 +17,8 @@ class ServiceTypeController extends Controller{
     }
 
     public function editServiceTypeInfoForm($id){
-        
+        $serviceType = (new CompanyInfoService())->getServiceTypeInformation($id);
+        return view('admin.service-type.service_type_edit',compact('serviceType'));
     }
 
     public function insertServiceTypeInfoFormSubmit(Request $request){

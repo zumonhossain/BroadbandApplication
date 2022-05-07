@@ -39,4 +39,10 @@ class PackageInfoController extends Controller{
 
         return redirect()->back()->with($notification);
     }
+
+    public function editPackageInfoForm($id){
+        $serviceTypes = (new CompanyInfoService())->getServiceTypeInformation(null);
+        $packageInfo = (new CompanyInfoService())->getPackageInformation($id);
+        return view('admin.package-info.package_info_edit',compact('packageInfo','serviceTypes'));
+    }
 }

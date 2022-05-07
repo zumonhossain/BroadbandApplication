@@ -167,6 +167,17 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function updatePackageInformation($id, $service_type_id, $package_name, $package_bandwidth, $package_price, $package_code){
+        return PackageInfo::where('package_id', $id)->update([
+            'service_type_id' => $service_type_id,
+            'package_name' => $package_name,
+            'package_bandwidth' => $package_bandwidth,
+            'package_price' => $package_price,
+            'package_code' => $package_code,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
 
 
 

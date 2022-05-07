@@ -45,4 +45,28 @@ class PackageInfoController extends Controller{
         $packageInfo = (new CompanyInfoService())->getPackageInformation($id);
         return view('admin.package-info.package_info_edit',compact('packageInfo','serviceTypes'));
     }
+
+    public function updatePackageInforFormSubmit(Request $request){
+        $this->validate($request, [
+            'package_name' => 'required',
+        ],[
+            'package_name.required' => 'Please enter package name!',
+        ]);
+
+        (new CompanyInfoService())->updatePackageInformation(
+            $request['package_id'],
+            $request['service_type_id'],
+            $request['package_name'],
+            $request['package_bandwidth'],
+            $request['package_price'],
+            $request['package_code']
+        );
+
+        $notification = array(
+            'messege' => 'Package Info Update Success!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('package_info_new_form')->with($notification);
+    }
 }

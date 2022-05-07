@@ -9,6 +9,6 @@ class PackageInfo extends Model{
     use HasFactory;
 
     public function serviceType(){
-        return $this->hasOne('App\Models\ServiceType','service_type_id','package_id');
+        return $this->hasOne('App\Models\ServiceType','service_type_id','service_type_id');
     }
 }

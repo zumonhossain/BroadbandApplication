@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\BannerInfoController;
 use App\Http\Controllers\Admin\CompanyInfoController;
 use App\Http\Controllers\Admin\ServiceTypeController;
+use App\Http\Controllers\Admin\PackageInfoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,6 +52,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('serviceType/edit-service-type/{id}', [ServiceTypeController::class, 'editServiceTypeInfoForm'])->name('service_type_edit_form');
     Route::post('serviceType/update-service-type', [ServiceTypeController::class, 'updateServiceTypeInfoFormSubmit'])->name('service_type_update_form');
     Route::post('serviceType/delete-service-type', [ServiceTypeController::class, 'deleteServiceTypeInfoFormSubmit'])->name('service_type_delete_form');
+
+    // Package Info
+    Route::get('packageInfo/new-package-info-form', [PackageInfoController::class, 'addNewPackageInfoForm'])->name('package_info_new_form');
+    Route::post('packageInfo/insert-new-package-info', [PackageInfoController::class, 'insertPackageInfoFormSubmit'])->name('package_info_insert_form');
+    Route::get('packageInfo/edit-package-info/{id}', [PackageInfoController::class, 'editPackageInfoForm'])->name('package_info_edit_form');
+    Route::post('packageInfo/update-package-info', [PackageInfoController::class, 'updatePackageInforFormSubmit'])->name('package_info_update_form');
+    Route::post('packageInfo/delete-package-info', [PackageInfoController::class, 'deletePackageInfoFormSubmit'])->name('package_info_delete_form');
 
 });
 

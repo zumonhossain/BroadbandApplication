@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\BannerInfo;
 use App\Models\CompanyInfo;
 use App\Models\ServiceType;
+use App\Models\PackageInfo;
 use Carbon\Carbon;
 
 class CompanyInfoService extends Controller{
@@ -144,6 +145,28 @@ class CompanyInfoService extends Controller{
     public function deleteServiceTypeInformation($id){
         return ServiceType::where('service_type_id', $id)->delete();
     }
+
+
+    //Package Info
+    public function getPackageInformation($id){
+        if($id == null){
+            return PackageInfo::where('package_status',1)->get();
+        }else{
+            return PackageInfo::where('package_id', $id)->first();
+        }   
+    }
+    
+    public function insertPackageInformation($service_type_id, $package_name, $package_bandwidth, $package_price, $package_code){
+        return PackageInfo::insertGetId([
+            'service_type_id' => $service_type_id,
+            'package_name' => $package_name,
+            'package_bandwidth' => $package_bandwidth,
+            'package_price' => $package_price,
+            'package_code' => $package_code,
+            'created_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
 
 
 

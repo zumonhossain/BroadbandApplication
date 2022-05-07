@@ -178,6 +178,12 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function deletePackageInforamtion($id){
+        return PackageInfo::where('package_id',$id)->update([
+            'package_status' =>0
+        ]);
+    }
+
 
 
 

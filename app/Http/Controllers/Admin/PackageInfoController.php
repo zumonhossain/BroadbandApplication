@@ -69,4 +69,16 @@ class PackageInfoController extends Controller{
 
         return redirect()->route('package_info_new_form')->with($notification);
     }
+
+    public function deletePackageInfoFormSubmit(Request $request){
+        $id = $request['modal_id'];
+
+        (new CompanyInfoService())->deletePackageInforamtion($id);
+
+        $notification=array(
+            'messege'=>'Package Info Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

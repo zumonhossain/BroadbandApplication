@@ -33,4 +33,9 @@ class DivisionController extends Controller{
         );
         return redirect()->back()->with($notification);
     }
+
+    public function editDivisionInfoForm($id){
+        $division = (new CompanyInfoService())->getDivisionInformation($id);
+        return view('admin.division.division_edit', compact('division'));
+    }
 }

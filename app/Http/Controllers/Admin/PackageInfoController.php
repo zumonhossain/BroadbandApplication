@@ -46,7 +46,7 @@ class PackageInfoController extends Controller{
         return view('admin.package-info.package_info_edit',compact('packageInfo','serviceTypes'));
     }
 
-    public function updatePackageInforFormSubmit(Request $request){
+    public function updatePackageInfoFormSubmit(Request $request){
         $this->validate($request, [
             'package_name' => 'required',
         ],[

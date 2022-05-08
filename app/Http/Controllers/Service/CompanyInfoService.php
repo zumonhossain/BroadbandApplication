@@ -8,6 +8,7 @@ use App\Models\BannerInfo;
 use App\Models\CompanyInfo;
 use App\Models\ServiceType;
 use App\Models\PackageInfo;
+use App\Models\Division;
 use Carbon\Carbon;
 
 class CompanyInfoService extends Controller{
@@ -185,6 +186,21 @@ class CompanyInfoService extends Controller{
     }
 
 
+    //Division
+    public function getDivisionInformation($id){
+        if($id == null){
+            return Division::where('division_status', 1)->get();
+        }else{
+            return Division::where('division_id', $id)->first();
+        }
+    }
+
+    public function insertDivisionInformation($division_name){
+        return Division::insertGetId([
+            'division_name' => $division_name,
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
 
 
 

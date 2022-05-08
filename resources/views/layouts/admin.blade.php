@@ -112,6 +112,12 @@
                         <li>
                             <a class="waves-effect waves-dark" href="{{ route('package_info_new_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Package Info</span></a>
                         </li>
+                        <li> 
+                            <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">General Setting</span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="{{ route('division_new_form') }}">Division</a></li>
+                            </ul>
+                        </li>
                         <li>
                             <a class="waves-effect waves-dark" href="{{ url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i><span class="hide-menu">Logout</span></a>
                         </li>

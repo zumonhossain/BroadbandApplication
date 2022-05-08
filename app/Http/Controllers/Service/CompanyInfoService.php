@@ -202,7 +202,12 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
-
+    public function updateDivisionInformation($id, $division_name){
+        return Division::where('division_id', $id)->update([
+            'division_name' => $division_name,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
 
 
 

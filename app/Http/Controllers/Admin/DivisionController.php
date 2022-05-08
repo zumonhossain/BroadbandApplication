@@ -38,4 +38,24 @@ class DivisionController extends Controller{
         $division = (new CompanyInfoService())->getDivisionInformation($id);
         return view('admin.division.division_edit', compact('division'));
     }
+
+    public function updateDivisionInfoFormSubmit(Request $request){
+        $this->validate($request, [
+            'division_name' => 'required',
+        ],[
+            'division_name.required' => 'Please enter division name!'
+        ]);
+
+        (new CompanyInfoService())->updateDivisionInformation(
+            $request['division_id'],
+            $request['division_name']
+        );
+
+        $notification = array(
+            'messege' => 'Division Update Success!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('division_new_form')->with($notification);
+    }
 }

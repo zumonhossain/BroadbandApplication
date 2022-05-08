@@ -209,6 +209,12 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function deleteDivisionInformation($id){
+        return Division::where('division_status', 1)->update([
+            'division_status' => 0
+        ]);
+    }
+
 
 
 

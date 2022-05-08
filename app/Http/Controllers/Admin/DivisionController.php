@@ -58,4 +58,17 @@ class DivisionController extends Controller{
 
         return redirect()->route('division_new_form')->with($notification);
     }
+
+    public function deleteDivisionInfoFormSubmit(Request $request){
+        $id = $request['modal_id'];
+
+        (new CompanyInfoService())->deleteDivisionInformation($id);
+
+        $notification = array(
+            'messege' => 'Division Delete Success!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

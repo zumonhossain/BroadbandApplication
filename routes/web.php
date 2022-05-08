@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\CompanyInfoController;
 use App\Http\Controllers\Admin\ServiceTypeController;
 use App\Http\Controllers\Admin\PackageInfoController;
 use App\Http\Controllers\Admin\DivisionController;
+use App\Http\Controllers\Admin\DistrictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,6 +68,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('division/edit-division-info/{id}', [DivisionController::class, 'editDivisionInfoForm'])->name('division_edit_form');
     Route::post('division/update-division-info', [DivisionController::class, 'updateDivisionInfoFormSubmit'])->name('division_update_form');
     Route::post('division/delete-division-info', [DivisionController::class, 'deleteDivisionInfoFormSubmit'])->name('division_delete_form');
+
+    // District
+    Route::get('district/new-district-form', [DistrictController::class, 'addNewDistrictForm'])->name('district_new_form');
+    Route::post('district/insert-new-district', [DistrictController::class, 'insertDistrictInfoFormSubmit'])->name('district_insert_form');
+    Route::get('district/edit-district/{id}', [DistrictController::class, 'editDistrictInfoForm'])->name('district_edit_form');
+    Route::post('district/update-district', [DistrictController::class, 'updateDistrictInfoFormSubmit'])->name('district_update_form');
+    Route::post('district/delete-district', [DistrictController::class, 'deleteDistrictInfoFormSubmit'])->name('district_delete_form');
 
 });
 

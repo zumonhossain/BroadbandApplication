@@ -9,7 +9,9 @@ use App\Models\CompanyInfo;
 use App\Models\ServiceType;
 use App\Models\PackageInfo;
 use App\Models\Division;
+use App\Models\District;
 use Carbon\Carbon;
+use Str;
 
 class CompanyInfoService extends Controller{
     public function __construct(){
@@ -210,10 +212,44 @@ class CompanyInfoService extends Controller{
     }
 
     public function deleteDivisionInformation($id){
-        return Division::where('division_status', 1)->update([
+        return Division::where('division_id', $id)->where('division_status', 1)->update([
             'division_status' => 0
         ]);
     }
+
+
+    // District
+    public function searchDistrictInformation($name){
+        $name = Str::lower($name);
+        $district = District::where(Str::lower('district_name'), $name)->first();
+
+        if($district == null) {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
+    public function getDistrictInformation($id){
+        if($id == null) {
+            return District::where('district_status', 1)->get();
+        }else{
+            return District::where('district_id', $id)->first();
+        }
+    }
+
+    public function insertDistrictInformation($division_id, $district_name){
+        if($this->searchDistrictInformation($district_name)) {
+            return null;
+        }else{
+            return District::insertGetId([
+                'division_id' => $division_id,
+                'district_name' => $district_name,
+                'created_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
+    }
+
 
 
 

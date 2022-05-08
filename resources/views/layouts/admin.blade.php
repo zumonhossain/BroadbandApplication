@@ -116,6 +116,7 @@
                             <a class="has-arrow waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">General Setting</span></a>
                             <ul aria-expanded="false" class="collapse">
                                 <li><a href="{{ route('division_new_form') }}">Division</a></li>
+                                <li><a href="{{ route('district_new_form') }}">District</a></li>
                             </ul>
                         </li>
                         <li>

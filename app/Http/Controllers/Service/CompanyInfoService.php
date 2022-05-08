@@ -359,5 +359,21 @@ class CompanyInfoService extends Controller{
         }
     }
 
+    public function updateUnionInformation($id, $division_id, $district_id, $upazila_id, $union_name){
+
+        if ($this->searchUnionInformation($union_name)) {
+            return null;
+        } else {
+            return Union::where('union_id', $id)->update([
+                'division_id' => $division_id,
+                'district_id' => $district_id,
+                'upazila_id' => $upazila_id,
+                'union_name' => $union_name,
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
+    }
+
+
 
 }

@@ -64,5 +64,42 @@ class UnionController extends Controller{
         }
     }
 
+    public function updateUnionInfoFormSubmit(Request $request){
+        $this->validate($request, [
+            'division_id' => 'required',
+            'district_id' => 'required',
+            'upazila_id' => 'required',
+            'union_name' => 'required',
+        ],[
+            'division_id.required' => 'Please enter division name!',
+            'district_id.required' => 'Please enter district name!',
+            'upazila_id.required' => 'Please enter upazila name!',
+            'union_name.required' => 'Please enter union name!',
+        ]);
+
+        $union = (new CompanyInfoService())->updateUnionInformation(
+            $request['union_id'],
+            $request['division_id'],
+            $request['district_id'],
+            $request['upazila_id'],
+            $request['union_name'],
+        );
+
+        if($union){
+            $notification=array(
+                'messege'=>'Union Name Update Success!',
+                'alert-type'=>'success',
+            );
+            return redirect()->route('union_new_form')->with($notification);
+        }
+        else{
+            $notification=array(
+                'messege'=>'Duplicate data!',
+                'alert-type'=>'error',
+            );
+            return redirect()->back()->with($notification);
+        }
+    
+    }
 
 }

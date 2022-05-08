@@ -102,4 +102,14 @@ class UnionController extends Controller{
     
     }
 
+    public function deleteUnionInfoFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteUnionInformation($id);
+
+        $notification=array(
+            'messege'=>'Union Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

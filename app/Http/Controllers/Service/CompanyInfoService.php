@@ -374,6 +374,11 @@ class CompanyInfoService extends Controller{
         }
     }
 
+    public function deleteUnionInformation($id){
+        return Union::where('union_id', $id)->update([
+            'union_status' => 0
+        ]);
+    }
 
 
 }

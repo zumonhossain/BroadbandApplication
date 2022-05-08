@@ -10,6 +10,7 @@ use App\Models\ServiceType;
 use App\Models\PackageInfo;
 use App\Models\Division;
 use App\Models\District;
+use App\Models\Upazila;
 use Carbon\Carbon;
 use Str;
 
@@ -267,6 +268,42 @@ class CompanyInfoService extends Controller{
             'district_status' => 0
         ]);
     }
+
+
+    // Upazila
+    public function searchUpazilaInformation($name){
+        $name = Str::lower($name);
+        $upazila = Upazila::where(Str::lower('upazila_name'), $name)->first();
+
+        if($upazila == null) {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public function getUpazilaInformation($id){
+        if($id == null){
+            return Upazila::where('upazila_status', 1)->get();
+        }else{
+            return Upazila::where('upazila_id', $id)->first();
+        }
+    }
+
+    public function insertUpazilaInformation($division_id, $district_id, $upazila_name){
+        if($this->searchUpazilaInformation($upazila_name)) {
+            return null;
+        }else{
+            return Upazila::insertGetId([
+                'division_id' => $division_id,
+                'district_id' => $district_id,
+                'upazila_name' => $upazila_name,
+                'created_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
+    }
+
+    
 
 
 }

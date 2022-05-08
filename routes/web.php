@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ServiceTypeController;
 use App\Http\Controllers\Admin\PackageInfoController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\DistrictController;
+use App\Http\Controllers\Admin\UpazilaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,11 +64,11 @@ Route::group(['prefix'=>'admin'], function(){
     Route::post('packageInfo/delete-package-info', [PackageInfoController::class, 'deletePackageInfoFormSubmit'])->name('package_info_delete_form');
 
     // Division
-    Route::get('division/new-division-info-form', [DivisionController::class, 'addNewDivisionInfoForm'])->name('division_new_form');
-    Route::post('division/insert-new-division-info', [DivisionController::class, 'insertDivisionInfoFormSubmit'])->name('division_insert_form');
-    Route::get('division/edit-division-info/{id}', [DivisionController::class, 'editDivisionInfoForm'])->name('division_edit_form');
-    Route::post('division/update-division-info', [DivisionController::class, 'updateDivisionInfoFormSubmit'])->name('division_update_form');
-    Route::post('division/delete-division-info', [DivisionController::class, 'deleteDivisionInfoFormSubmit'])->name('division_delete_form');
+    Route::get('division/new-division-form', [DivisionController::class, 'addNewDivisionInfoForm'])->name('division_new_form');
+    Route::post('division/insert-new-division', [DivisionController::class, 'insertDivisionInfoFormSubmit'])->name('division_insert_form');
+    Route::get('division/edit-division/{id}', [DivisionController::class, 'editDivisionInfoForm'])->name('division_edit_form');
+    Route::post('division/update-division', [DivisionController::class, 'updateDivisionInfoFormSubmit'])->name('division_update_form');
+    Route::post('division/delete-division', [DivisionController::class, 'deleteDivisionInfoFormSubmit'])->name('division_delete_form');
 
     // District
     Route::get('district/new-district-form', [DistrictController::class, 'addNewDistrictForm'])->name('district_new_form');
@@ -75,6 +76,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('district/edit-district/{id}', [DistrictController::class, 'editDistrictInfoForm'])->name('district_edit_form');
     Route::post('district/update-district', [DistrictController::class, 'updateDistrictInfoFormSubmit'])->name('district_update_form');
     Route::post('district/delete-district', [DistrictController::class, 'deleteDistrictInfoFormSubmit'])->name('district_delete_form');
+
+    // Upazila
+    Route::get('upazila/new-upazila-form', [UpazilaController::class, 'addNewUpazilaForm'])->name('upazila_new_form');
+    Route::post('upazila/insert-new-upazila', [UpazilaController::class, 'insertUpazilaInfoFormSubmit'])->name('upazila_insert_form');
+    Route::get('upazila/edit-upazila/{id}', [UpazilaController::class, 'editUpazilaInfoForm'])->name('upazila_edit_form');
+    Route::post('upazila/update-upazila', [UpazilaController::class, 'updateUpazilaInfoFormSubmit'])->name('upazila_update_form');
+    Route::post('upazila/delete-upazila', [UpazilaController::class, 'deleteUpazilaInfoFormSubmit'])->name('upazila_delete_form');
+
 
 });
 

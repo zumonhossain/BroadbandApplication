@@ -316,6 +316,11 @@ class CompanyInfoService extends Controller{
         }
     }
 
+    public function deleteUpazilaInformation($id){
+        return Upazila::where('upazila_id', $id)->update([
+            'upazila_status' =>0
+        ]);
+    }
 
 
 }

@@ -83,4 +83,14 @@ class UpazilaController extends Controller{
         return redirect()->route('upazila_new_form')->with($notification);
     }
 
+    public function deleteUpazilaInfoFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteUpazilaInformation($id);
+
+        $notification = array(
+            'messege' => 'Upazila Delete Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

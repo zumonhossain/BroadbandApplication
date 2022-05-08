@@ -303,7 +303,19 @@ class CompanyInfoService extends Controller{
         }
     }
 
-    
+    public function updateUpazilaInformation($id, $division_id, $district_id, $upazila_name){
+        if($this->searchUpazilaInformation($upazila_name)) {
+            return null;
+        }else{
+            return Upazila::where('upazila_id', $id)->update([
+                'division_id' => $division_id,
+                'district_id' => $district_id,
+                'upazila_name' => $upazila_name,
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
+    }
+
 
 
 }

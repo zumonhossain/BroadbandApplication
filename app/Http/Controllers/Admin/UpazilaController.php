@@ -58,4 +58,29 @@ class UpazilaController extends Controller{
         }
     }
 
+    public function updateUpazilaInfoFormSubmit(Request $request){
+        $this->validate($request, [
+            'division_id' => 'required',
+            'district_id' => 'required',
+            'upazila_name' => 'required',
+        ], [
+            'division_id.required' => 'Please enter division name!',
+            'district_id.required' => 'Please enter district name!',
+            'upazila_name.required' => 'Please enter upazila name!',
+        ]);
+
+        (new CompanyInfoService())->updateUpazilaInformation(
+            $request->upazila_id,
+            $request['division_id'],
+            $request['district_id'],
+            $request['upazila_name'],
+        );
+
+        $notification = array(
+            'messege' => 'Upazila Name Update Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('upazila_new_form')->with($notification);
+    }
+
 }

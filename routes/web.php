@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\PackageInfoController;
 use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\UpazilaController;
+use App\Http\Controllers\Admin\UnionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('upazila/edit-upazila/{id}', [UpazilaController::class, 'editUpazilaInfoForm'])->name('upazila_edit_form');
     Route::post('upazila/update-upazila', [UpazilaController::class, 'updateUpazilaInfoFormSubmit'])->name('upazila_update_form');
     Route::post('upazila/delete-upazila', [UpazilaController::class, 'deleteUpazilaInfoFormSubmit'])->name('upazila_delete_form');
+
+    // Union
+    Route::get('union/new-union-form', [UnionController::class, 'addNewUnionForm'])->name('union_new_form');
+    Route::post('union/insert-new-union', [UnionController::class, 'insertUnionInfoFormSubmit'])->name('union_insert_form');
+    Route::get('union/edit-union/{id}', [UnionController::class, 'editUnionInfoForm'])->name('union_edit_form');
+    Route::post('union/update-union', [UnionController::class, 'updateUnionInfoFormSubmit'])->name('union_update_form');
+    Route::post('union/delete-union', [UnionController::class, 'deleteUnionInfoFormSubmit'])->name('union_delete_form');
 
 
 });

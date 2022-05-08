@@ -11,6 +11,7 @@ use App\Models\PackageInfo;
 use App\Models\Division;
 use App\Models\District;
 use App\Models\Upazila;
+use App\Models\Union;
 use Carbon\Carbon;
 use Str;
 
@@ -320,6 +321,42 @@ class CompanyInfoService extends Controller{
         return Upazila::where('upazila_id', $id)->update([
             'upazila_status' =>0
         ]);
+    }
+
+
+    // Union
+    public function searchUnionInformation($name){
+        $name = Str::lower($name);
+        $union = Union::where(Str::lower('union_name'), $name)->first();
+
+        if ($union == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public function getUnionInformation($id){
+        if ($id == null) {
+            return  $unions = Union::all();
+        } else {
+            return  $unions = Union::where('union_id', $id)->first();
+        }
+    }
+
+    public function insertUnionInformation($division_id, $district_id, $upazila_id, $union_name){
+
+        if ($this->searchUnionInformation($union_name)) {
+            return null;
+        } else {
+            return $insert = Union::insertGetId([
+                'division_id' => $division_id,
+                'district_id' => $district_id,
+                'upazila_id' => $upazila_id,
+                'union_name' => $union_name,
+                'created_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
     }
 
 

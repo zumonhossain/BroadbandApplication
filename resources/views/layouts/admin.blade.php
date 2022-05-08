@@ -118,6 +118,7 @@
                                 <li><a href="{{ route('division_new_form') }}">Division</a></li>
                                 <li><a href="{{ route('district_new_form') }}">District</a></li>
                                 <li><a href="{{ route('upazila_new_form') }}">Upazila</a></li>
+                                <li><a href="{{ route('union_new_form') }}">Union</a></li>
                             </ul>
                         </li>
                         <li>

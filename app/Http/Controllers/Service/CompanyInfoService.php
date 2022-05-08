@@ -250,7 +250,17 @@ class CompanyInfoService extends Controller{
         }
     }
 
-
+    public function updateDistrictInformation($id, $division_id, $district_name){
+        if($this->searchDistrictInformation($district_name)) {
+            return null;
+        }else{
+            return District::where('district_id', $id)->update([
+                'division_id' => $division_id,
+                'district_name' => $district_name,
+                'updated_at' => Carbon::now()->toDateTimeString()
+            ]);
+        }
+    }
 
 
 

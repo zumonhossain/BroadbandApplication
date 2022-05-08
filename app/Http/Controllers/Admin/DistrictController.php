@@ -56,6 +56,35 @@ class DistrictController extends Controller{
         }
     }
 
+    public function updateDistrictInfoFormSubmit(Request $request){
+        $this->validate($request, [
+            'division_id' => 'required',
+            'district_name' => 'required',
+        ], [
+            'division_id.required' => 'Please enter division name!',
+            'district_name.required' => 'Please enter district name!',
+        ]);
+
+        $district = (new CompanyInfoService())->updateDistrictInformation(
+            $request['district_id'],
+            $request['division_id'],
+            $request['district_name'],
+        );
+
+        if($district){
+            $notification = array(
+                'messege' => 'District Save Success!',
+                'alert-type' => 'success',
+            );
+            return redirect()->back()->with($notification);
+        }else{
+            $notification = array(
+                'messege' => 'Duplicate data!',
+                'alert-type' => 'error',
+            );
+            return redirect()->back()->with($notification);
+        }
+    }
 
 
 }

@@ -262,6 +262,11 @@ class CompanyInfoService extends Controller{
         }
     }
 
+    public function deleteDistrictInformation($id){
+        return District::where('district_id', $id)->where('district_status', 1)->update([
+            'district_status' => 0
+        ]);
+    }
 
 
 }

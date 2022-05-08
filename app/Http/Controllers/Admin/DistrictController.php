@@ -86,5 +86,17 @@ class DistrictController extends Controller{
         }
     }
 
+    public function deleteDistrictInfoFormSubmit(Request $request){
+        
+        $id = $request['modal_id'];
+        
+        (new CompanyInfoService())->deleteDistrictInformation($id);
 
+        $notification = array(
+            'messege' => 'Division Delete Success!',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

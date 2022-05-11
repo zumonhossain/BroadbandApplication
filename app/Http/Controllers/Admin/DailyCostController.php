@@ -52,6 +52,13 @@ class DailyCostController extends Controller{
         return redirect()->back()->with($notification);
     }
 
+    public function editDailyCostForm($id){
+        $months = (new CompanyInfoService())->getMonths(null);
+        $users = (new CompanyInfoService())->getUserInformation(null);
+        $debitTypes = (new CompanyInfoService())->getDebitTypeInformation(null);
+        $dailyCost = (new CompanyInfoService())->getDailyCostInformation($id);
+        return view('admin.daily-cost.daily_cost_edit',compact('dailyCost','debitTypes','users','months'));
+    }
 
 
 }

@@ -504,6 +504,23 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function updateDailyCostInformation($id, $transaction_id, $debit_type_id, $expense_date, $amount, $debited_to_id, $credited_from_id, $expense_by_id, $year, $month_id, $voucher_file_path, $approve_Status, $creator){
 
+        return DailyCost::where('daily_cost_id', $id)->update([
+            'transaction_id' => 0,
+            'debit_type_id' => $debit_type_id,
+            'expense_date' => $expense_date,
+            'amount' => $amount,
+            'debited_to_id' => 0,
+            'credited_from_id' => 0,
+            'expense_by_id' => $expense_by_id,
+            'year' => $year,
+            'month_id' => $month_id,
+            'voucher_file_path' => $voucher_file_path,
+            'approve_Status' => 0,
+            'creator' => $creator,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
 
 }

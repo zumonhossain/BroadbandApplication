@@ -60,5 +60,34 @@ class DailyCostController extends Controller{
         return view('admin.daily-cost.daily_cost_edit',compact('dailyCost','debitTypes','users','months'));
     }
 
+    public function updateDailyCostFormSubmit(Request $request){
+
+        // dd($request->all());
+
+        $creator = Auth::user()->id;
+
+        (new CompanyInfoService())->updateDailyCostInformation(
+            $request['daily_cost_id'],
+            $request['transaction_id'],
+            $request['debit_type_id'],
+            $request['expense_date'],
+            $request['amount'],
+            $request['debited_to_id'],
+            $request['credited_from_id'],
+            $request['expense_by_id'],
+            $request['year'],
+            $request['month_id'],
+            $request['voucher_file_path'],
+            $request['approve_Status'],
+            $creator,
+        );
+
+        $notification=array(
+            'messege'=>'DailyCost Update Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->route('daily_cost_new_form')->with($notification);
+    
+    }
 
 }

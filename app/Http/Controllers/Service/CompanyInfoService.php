@@ -423,7 +423,7 @@ class CompanyInfoService extends Controller{
             return ServiceSubArea::where('service_sub_area_id', $id)->first();
         }
     }
-
+    
     public function insertServiceSubAreaInformation($service_area_id, $service_sub_area_name, $service_sub_area_remarks){
         return ServiceSubArea::insertGetId([
             'service_area_id' => $service_area_id,
@@ -440,5 +440,10 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function deleteServiceSubAreaInformation($id){
+        return ServiceSubArea::where('service_sub_area_id', $id)->update([
+            'service_sub_area_status' => 0
+        ]);
+    }
 
 }

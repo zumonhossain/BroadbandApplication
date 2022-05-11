@@ -73,4 +73,14 @@ class ServiceSubAreaController extends Controller{
     
     }
 
+    public function deleteServiceSubAreaFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteServiceSubAreaInformation($id);
+
+        $notification=array(
+            'messege'=>'Service Sub Area Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

@@ -47,7 +47,7 @@
                                 <select class="form-control" name="expense_by_id">
                                     <option value="">-- Select User List --</option>
                                     @foreach($users as $user)
-                                        <option value="{{ $user->id }}" {{ $user->id == $dailyCost->debit_type_id ? 'selected': '' }}>{{ $user->name }}</option>
+                                        <option value="{{ $user->id }}" {{ $user->id == $dailyCost->expense_by_id ? 'selected': '' }}>{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>

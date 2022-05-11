@@ -46,5 +46,31 @@ class ServiceSubAreaController extends Controller{
         return view('admin.service-sub-area.service_sub_area_edit',compact('serviceSubArea','serviceAreas'));
     }
 
+    public function updateServiceSubAreaFormSubmit(Request $request){
+
+        // dd($request->all());
+
+        $this->validate($request, [
+            'service_area_id' => 'required',
+            'service_sub_area_name' => 'required',
+        ],[
+            'service_area_id.required' => 'Please enter service area name!',
+            'service_sub_area_name.required' => 'Please enter service sub area name!',
+        ]);
+
+        (new CompanyInfoService())->updateServiceSubAreaInformation(
+            $request['service_sub_area_id'],
+            $request['service_area_id'],
+            $request['service_sub_area_name'],
+            $request['service_sub_area_remarks'],
+        );
+
+        $notification=array(
+            'messege'=>'Service Sub Area Update Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->route('service_sub_area_new_form')->with($notification);
+    
+    }
 
 }

@@ -432,4 +432,13 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function updateServiceSubAreaInformation($id, $service_area_id, $service_sub_area_name, $service_sub_area_remarks){
+        return ServiceSubArea::where('service_sub_area_id', $id)->update([
+            'service_area_id' => $service_area_id,
+            'service_sub_area_name' => $service_sub_area_name,
+            'service_sub_area_remarks' => $service_sub_area_remarks,
+        ]);
+    }
+
+
 }

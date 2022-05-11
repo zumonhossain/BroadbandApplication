@@ -12,6 +12,7 @@ use App\Models\Division;
 use App\Models\District;
 use App\Models\Upazila;
 use App\Models\Union;
+use App\Models\ServiceArea;
 use Carbon\Carbon;
 use Str;
 
@@ -379,6 +380,26 @@ class CompanyInfoService extends Controller{
             'union_status' => 0
         ]);
     }
+
+
+    // Service Area
+    public function getServiceAreaInformation($id){
+        if($id == null){
+            return ServiceArea::where('service_area_status', 1)->get();
+        }else{
+            return ServiceArea::where('service_area_id', $id)->first();
+        }
+    }
+
+    public function insertServiceAreaInformation($service_area_name, $service_area_remarks){
+        return ServiceArea::insertGetId([
+            'service_area_name' => $service_area_name,
+            'service_area_remarks' => $service_area_remarks,
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
+
+
 
 
 }

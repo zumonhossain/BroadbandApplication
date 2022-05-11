@@ -95,10 +95,10 @@ Route::group(['prefix'=>'admin'], function(){
 
     // Service Area
     Route::get('serviceArea/new-service-area-form', [ServiceAreaController::class, 'addNewServiceAreaForm'])->name('service_area_new_form');
-    Route::post('serviceArea/insert-new-service-area', [ServiceAreaController::class, 'insertServiceAreaInfoFormSubmit'])->name('service_area_insert_form');
-    Route::get('serviceArea/edit-service-area/{id}', [ServiceAreaController::class, 'editServiceAreaInfoForm'])->name('service_area_edit_form');
-    Route::post('serviceArea/update-service-area', [ServiceAreaController::class, 'updateServiceAreaInfoFormSubmit'])->name('service_area_update_form');
-    Route::post('serviceArea/delete-service-area', [ServiceAreaController::class, 'deleteServiceAreaInfoFormSubmit'])->name('service_area_delete_form');
+    Route::post('serviceArea/insert-new-service-area', [ServiceAreaController::class, 'insertServiceAreaFormSubmit'])->name('service_area_insert_form');
+    Route::get('serviceArea/edit-service-area/{id}', [ServiceAreaController::class, 'editServiceAreaForm'])->name('service_area_edit_form');
+    Route::post('serviceArea/update-service-area', [ServiceAreaController::class, 'updateServiceAreaFormSubmit'])->name('service_area_update_form');
+    Route::post('serviceArea/delete-service-area', [ServiceAreaController::class, 'deleteServiceAreaFormSubmit'])->name('service_area_delete_form');
 
 
 });

@@ -407,6 +407,11 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function deleteServiceAreaInformation($id){
+        return ServiceArea::where('service_area_id', $id)->update([
+            'service_area_status' => 0,
+        ]);
+    }
 
 
 }

@@ -60,4 +60,14 @@ class ServiceAreaController extends Controller{
         return redirect()->route('service_area_new_form')->with($notification);
     }
 
+    public function deleteServiceAreaFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteServiceAreaInformation($id);
+
+        $notification=array(
+            'messege'=>'Service Area Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

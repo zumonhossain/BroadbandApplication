@@ -90,4 +90,14 @@ class DailyCostController extends Controller{
     
     }
 
+    public function deleteDailyCostFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteDailyCostInformation($id);
+
+        $notification=array(
+            'messege'=>'DailyCost Delete Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

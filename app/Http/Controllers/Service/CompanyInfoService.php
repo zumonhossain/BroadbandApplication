@@ -523,4 +523,9 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function deleteDailyCostInformation($id){
+        return DailyCost::where('daily_cost_id', $id)->update([
+            'daily_cost_status' =>0
+        ]);
+    }
 }

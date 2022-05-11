@@ -40,4 +40,24 @@ class ServiceAreaController extends Controller{
         return view('admin.service-area.service_area_edit',compact('serviceArea'));
     }
 
+    public function updateServiceAreaFormSubmit(Request $request){
+        $this->validate($request, [
+            'service_area_name' => 'required',
+        ],[
+            'serviceAreaName.required' => 'Please enter service area name!',
+        ]);
+
+        (new CompanyInfoService())->updateServiceAreaInformation(
+            $request['service_area_id'],
+            $request['service_area_name'],
+            $request['service_area_remarks'],
+        );
+
+        $notification=array(
+            'messege'=>'Service Area Update Success!',
+            'alert-type'=>'success',
+        );
+        return redirect()->route('service_area_new_form')->with($notification);
+    }
+
 }

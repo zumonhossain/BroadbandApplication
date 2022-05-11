@@ -399,6 +399,13 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
+    public function updateServiceAreaInformation($id, $service_area_name, $service_area_remarks){
+        return ServiceArea::where('service_area_id', $id)->update([
+            'service_area_name' => $service_area_name,
+            'service_area_remarks' => $service_area_remarks,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
 
 
 

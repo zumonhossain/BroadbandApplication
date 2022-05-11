@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Service;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Month;
+use App\Models\User;
 use App\Models\BannerInfo;
 use App\Models\CompanyInfo;
 use App\Models\ServiceType;
@@ -14,12 +16,40 @@ use App\Models\Upazila;
 use App\Models\Union;
 use App\Models\ServiceArea;
 use App\Models\ServiceSubArea;
+use App\Models\DebitType;
+use App\Models\DailyCost;
 use Carbon\Carbon;
 use Str;
 
 class CompanyInfoService extends Controller{
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function getMonths($id){
+        if ($id == null) {
+            return Month::get();
+        } else {
+            return Month::where('month_id', $id)->first();
+        }
+    }
+
+    //user
+    public function getUserInformation($id){
+        if ($id == null) {
+            return  $users = User::all();
+        } else {
+            return  $users = User::where('id', $id)->first();
+        }
+    }
+
+    //Debit Type
+    public function getDebitTypeInformation($id){
+        if ($id == null) {
+            return  $debitTypes = DebitType::all();
+        } else {
+            return  $debitTypes = DebitType::where('id', $id)->first();
+        }
     }
 
     // Banner Info
@@ -445,5 +475,35 @@ class CompanyInfoService extends Controller{
             'service_sub_area_status' => 0
         ]);
     }
+
+
+    // Daily Cost
+    public function getDailyCostInformation($id){
+        if ($id == null) {
+            return  $serviceArea = DailyCost::where('daily_cost_status', 1)->get();
+        } else {
+            return  $serviceArea = DailyCost::where('daily_cost_id', $id)->first();
+        }
+    }
+
+    public function insertDailyCostInformation($transaction_id, $debit_type_id, $expense_date, $amount, $debited_to_id, $credited_from_id, $expense_by_id, $year, $month_id, $voucher_file_path, $approve_Status, $creator){
+        return DailyCost::insertGetId([
+            'transaction_id' => 0,
+            'debit_type_id' => $debit_type_id,
+            'expense_date' => $expense_date,
+            'amount' => $amount,
+            'debited_to_id' => 0,
+            'credited_from_id' => 0,
+            'expense_by_id' => $expense_by_id,
+            'year' => $year,
+            'month_id' => $month_id,
+            'voucher_file_path' => $voucher_file_path,
+            'approve_Status' => 0,
+            'creator' => $creator,
+            'created_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
+
+
 
 }

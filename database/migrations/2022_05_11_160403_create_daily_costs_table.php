@@ -14,19 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('daily_costs', function (Blueprint $table) {
-            $table->bigIncrements('debit_voucher_id');
+            $table->bigIncrements('daily_cost_id');
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('debit_type_id');
             $table->date('expense_date');
             $table->float('amount',11,2);
-            $table->integer('debited_told');
+            $table->integer('debited_to_id');
             $table->integer('credited_from_id');
             $table->integer('expense_by_id');
             $table->integer('year');
             $table->integer('month_id');
             $table->string('voucher_file_path');
             $table->unsignedBigInteger('creator');
-            $table->boolean('debit_voucher_status')->default(1);
+            $table->integer('approve_Status')->default(1);
+            $table->boolean('daily_cost_status')->default(1);
             $table->timestamps();
         });
     }

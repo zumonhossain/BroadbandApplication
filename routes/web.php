@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\UpazilaController;
 use App\Http\Controllers\Admin\UnionController;
 use App\Http\Controllers\Admin\ServiceAreaController;
 use App\Http\Controllers\Admin\ServiceSubAreaController;
+use App\Http\Controllers\Admin\DailyCostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -107,6 +108,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('serviceSubArea/edit-service-sub-area/{id}', [ServiceSubAreaController::class, 'editServiceSubAreaForm'])->name('service_sub_area_edit_form');
     Route::post('serviceSubArea/update-service-sub-area', [ServiceSubAreaController::class, 'updateServiceSubAreaFormSubmit'])->name('service_sub_area_update_form');
     Route::post('serviceSubArea/delete-service-sub-area', [ServiceSubAreaController::class, 'deleteServiceSubAreaFormSubmit'])->name('service_sub_area_delete_form');
+
+    // Daily Cost
+    Route::get('admin/daily/cost/new-daily-cost-form', [DailyCostController::class, 'addNewDailyCostForm'])->name('daily_cost_new_form');
+    Route::post('admin/daily/cost/insert-new-daily-cost', [DailyCostController::class, 'insertDailyCostFormSubmit'])->name('daily_cost_insert_form');
+    Route::get('admin/daily/cost/edit-daily-cost/{id}', [DailyCostController::class, 'editDailyCostForm'])->name('daily_cost_edit_form');
+    Route::post('admin/daily/cost/update-daily-cost', [DailyCostController::class, 'updateDailyCostFormSubmit'])->name('daily_cost_update_form');
+    Route::post('admin/daily/cost/delete-daily-cost', [DailyCostController::class, 'deleteDailyCostFormSubmit'])->name('daily_cost_delete_form');
 
 
 });

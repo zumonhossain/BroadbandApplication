@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('debit_vouchers', function (Blueprint $table) {
+        Schema::create('daily_costs', function (Blueprint $table) {
             $table->bigIncrements('debit_voucher_id');
             $table->unsignedBigInteger('transaction_id');
             $table->unsignedBigInteger('debit_type_id');
@@ -38,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('debit_vouchers');
+        Schema::dropIfExists('daily_costs');
     }
 };

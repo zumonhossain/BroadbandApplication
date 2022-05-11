@@ -40,5 +40,11 @@ class ServiceSubAreaController extends Controller{
         return redirect()->back()->with($notification);
     }
 
+    public function editServiceSubAreaForm($id){
+        $serviceAreas = (new CompanyInfoService())->getServiceAreaInformation(null);
+        $serviceSubArea = (new CompanyInfoService())->getServiceSubAreaInformation($id);
+        return view('admin.service-sub-area.service_sub_area_edit',compact('serviceSubArea','serviceAreas'));
+    }
+
 
 }

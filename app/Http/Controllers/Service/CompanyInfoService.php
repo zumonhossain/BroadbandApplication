@@ -432,5 +432,4 @@ class CompanyInfoService extends Controller{
         ]);
     }
 
-
 }

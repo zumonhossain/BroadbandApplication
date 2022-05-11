@@ -120,6 +120,7 @@
                                 <li><a href="{{ route('upazila_new_form') }}">Upazila</a></li>
                                 <li><a href="{{ route('union_new_form') }}">Union</a></li>
                                 <li><a href="{{ route('service_area_new_form') }}">Service Area</a></li>
+                                <li><a href="{{ route('service_sub_area_new_form') }}">Service Sub Area</a></li>
                             </ul>
                         </li>
                         <li>

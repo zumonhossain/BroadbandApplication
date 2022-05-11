@@ -13,6 +13,7 @@ use App\Models\District;
 use App\Models\Upazila;
 use App\Models\Union;
 use App\Models\ServiceArea;
+use App\Models\ServiceSubArea;
 use Carbon\Carbon;
 use Str;
 
@@ -410,6 +411,24 @@ class CompanyInfoService extends Controller{
     public function deleteServiceAreaInformation($id){
         return ServiceArea::where('service_area_id', $id)->update([
             'service_area_status' => 0,
+        ]);
+    }
+
+
+    // Service Sub Area
+    public function getServiceSubAreaInformation($id){
+        if ($id == null) {
+            return ServiceSubArea::where('service_sub_area_status', 1)->get();
+        } else {
+            return ServiceSubArea::where('service_sub_area_id', $id)->first();
+        }
+    }
+
+    public function insertServiceSubAreaInformation($service_area_id, $service_sub_area_name, $service_sub_area_remarks){
+        return ServiceSubArea::insertGetId([
+            'service_area_id' => $service_area_id,
+            'service_sub_area_name' => $service_sub_area_name,
+            'service_sub_area_remarks' => $service_sub_area_remarks,
         ]);
     }
 

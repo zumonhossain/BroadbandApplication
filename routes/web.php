@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\UpazilaController;
 use App\Http\Controllers\Admin\UnionController;
 use App\Http\Controllers\Admin\ServiceAreaController;
+use App\Http\Controllers\Admin\ServiceSubAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,6 +100,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('serviceArea/edit-service-area/{id}', [ServiceAreaController::class, 'editServiceAreaForm'])->name('service_area_edit_form');
     Route::post('serviceArea/update-service-area', [ServiceAreaController::class, 'updateServiceAreaFormSubmit'])->name('service_area_update_form');
     Route::post('serviceArea/delete-service-area', [ServiceAreaController::class, 'deleteServiceAreaFormSubmit'])->name('service_area_delete_form');
+
+    // Service Sub Area
+    Route::get('serviceSubArea/new-service-sub-area-form', [ServiceSubAreaController::class, 'addNewServiceSubAreaForm'])->name('service_sub_area_new_form');
+    Route::post('serviceSubArea/insert-new-service-sub-area', [ServiceSubAreaController::class, 'insertServiceSubAreaFormSubmit'])->name('service_sub_area_insert_form');
+    Route::get('serviceSubArea/edit-service-sub-area/{id}', [ServiceSubAreaController::class, 'editServiceSubAreaForm'])->name('service_sub_area_edit_form');
+    Route::post('serviceSubArea/update-service-sub-area', [ServiceSubAreaController::class, 'updateServiceSubAreaFormSubmit'])->name('service_sub_area_update_form');
+    Route::post('serviceSubArea/delete-service-sub-area', [ServiceSubAreaController::class, 'deleteServiceSubAreaFormSubmit'])->name('service_sub_area_delete_form');
 
 
 });

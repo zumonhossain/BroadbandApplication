@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\DivisionController;
 use App\Http\Controllers\Admin\DistrictController;
 use App\Http\Controllers\Admin\UpazilaController;
 use App\Http\Controllers\Admin\UnionController;
+use App\Http\Controllers\Admin\ServiceAreaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -91,6 +92,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('union/edit-union/{id}', [UnionController::class, 'editUnionInfoForm'])->name('union_edit_form');
     Route::post('union/update-union', [UnionController::class, 'updateUnionInfoFormSubmit'])->name('union_update_form');
     Route::post('union/delete-union', [UnionController::class, 'deleteUnionInfoFormSubmit'])->name('union_delete_form');
+
+    // Service Area
+    Route::get('serviceArea/new-service-area-form', [ServiceAreaController::class, 'addNewServiceAreaForm'])->name('service_area_new_form');
+    Route::post('serviceArea/insert-new-service-area', [ServiceAreaController::class, 'insertServiceAreaInfoFormSubmit'])->name('service_area_insert_form');
+    Route::get('serviceArea/edit-service-area/{id}', [ServiceAreaController::class, 'editServiceAreaInfoForm'])->name('service_area_edit_form');
+    Route::post('serviceArea/update-service-area', [ServiceAreaController::class, 'updateServiceAreaInfoFormSubmit'])->name('service_area_update_form');
+    Route::post('serviceArea/delete-service-area', [ServiceAreaController::class, 'deleteServiceAreaInfoFormSubmit'])->name('service_area_delete_form');
 
 
 });

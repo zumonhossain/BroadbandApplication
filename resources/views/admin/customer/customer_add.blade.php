@@ -28,7 +28,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">email<span class="require_star">*</span></label>
-                                    <input type="text" name="email" class="form-control" placeholder="email" value="{{ old('email') }}">
+                                    <input type="email" name="email" class="form-control" placeholder="email" value="{{ old('email') }}">
                                     @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

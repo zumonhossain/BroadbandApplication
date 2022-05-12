@@ -10,14 +10,14 @@
                     <form action="{{ route('customer_update_form') }}" method="POST" class="form-horizontal">
                         @csrf
 
-                        <input type="hidden" name="customerId" value="{{ $customer->customerId }}">
+                        <input type="hidden" name="customer_id" value="{{ $customer->customer_id }}">
 
                         <div class="row row-sm">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Customer Name<span class="require_star">*</span></label>
-                                    <input type="text" name="customerName" class="form-control" placeholder="Customer Name" value="{{ $customer->customerName }}">
-                                    @error('customerName')
+                                    <input type="text" name="customer_name" class="form-control" placeholder="Customer Name" value="{{ $customer->customer_name}}">
+                                    @error('customer_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -25,13 +25,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Father Name</label>
-                                    <input type="text" name="fatherName" class="form-control" placeholder="Father Name" value="{{ $customer->fatherName }}">
+                                    <input type="text" name="father_name" class="form-control" placeholder="Father Name" value="{{ $customer->father_name }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Email<span class="require_star">*</span></label>
-                                    <input type="text" name="email" class="form-control" placeholder="Email" value="{{ $customer->email }}">
+                                    <label class="form-control-label">email<span class="require_star">*</span></label>
+                                    <input type="email" name="email" class="form-control" placeholder="email" value="{{ $customer->email }}">
                                     @error('email')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -40,8 +40,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Application Date<span class="require_star">*</span></label>
-                                    <input type="date" name="applicationDate" class="form-control" value="{{ $customer->applicationDate }}">
-                                    @error('applicationDate')
+                                    <input type="date" name="application_date" class="form-control" value="{{ $customer->application_date }}">
+                                    @error('application_date')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -49,8 +49,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Phone Number One<span class="require_star">*</span></label>
-                                    <input type="text" name="phoneNo1" class="form-control" placeholder="Phone Number One" value="{{ $customer->phoneNo1 }}">
-                                    @error('phoneNo1')
+                                    <input type="text" name="phone_no1" class="form-control" placeholder="Phone Number One" value="{{ $customer->phone_no1 }}">
+                                    @error('phone_no1')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -58,14 +58,14 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Phone Number Two</label>
-                                    <input type="text" name="phoneNo2" class="form-control" placeholder="Phone Number Two" value="{{ $customer->phoneNo2 }}">
+                                    <input type="text" name="phone_no2" class="form-control" placeholder="Phone Number Two" value="{{ $customer->phone_no2 }}">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Connection Date<span class="require_star">*</span></label>
-                                    <input type="date" name="connectionDate" class="form-control" value="{{ $customer->connectionDate }}">
-                                    @error('connectionDate')
+                                    <input type="date" name="connection_date" class="form-control" value="{{ $customer->connection_date }}">
+                                    @error('connection_date')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -73,13 +73,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Connection Status<span class="require_star">*</span></label>
-                                    <select class="form-control" name="connectionStatusId">
-                                        <option value="">-- Select Connection Status --</option>
-                                            <option value="1" {{ $customer->connectionStatusId == 1 ? 'selected' : '' }}>Active</option>
-                                            <option value="2" {{ $customer->connectionStatusId == 2 ? 'selected' : '' }}>inActive</option>
-                                            <option value="3" {{ $customer->connectionStatusId == 3 ? 'selected' : '' }}>Disconnect</option>
+                                    <select class="form-control" name="connection_status_id">
+                                        <option value="">-- Select Service Type --</option>
+                                            @foreach($connectionStatus as $aConnection)
+                                            <option value="{{ $aConnection->connection_status_id }}" {{ $aConnection->connection_status_id == $customer->connection_status_id ? 'selected': '' }}>{{ $aConnection->connection_status_name }}</option>
+                                            @endforeach
                                     </select>
-                                    @error('connectionStatusId')
+                                    @error('connection_status_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -87,13 +87,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Customer Occupation<span class="require_star">*</span></label>
-                                    <select class="form-control" name="customerOccupationId">
+                                    <select class="form-control" name="customer_occupation_id">
                                         <option value="">-- Select Occupation --</option>
-                                            <option value="1" {{ $customer->customerOccupationId == 1 ? 'selected' : '' }}>Public Job</option>
-                                            <option value="2" {{ $customer->customerOccupationId == 2 ? 'selected' : '' }}>Private Job</option>
-                                            <option value="3" {{ $customer->customerOccupationId == 3 ? 'selected' : '' }}>Business</option>
+                                            <option value="1" {{ $customer->customer_occupation_id == 1 ? 'selected' : '' }}>Public Job</option>
+                                            <option value="2" {{ $customer->customer_occupation_id == 2 ? 'selected' : '' }}>Private Job</option>
+                                            <option value="3" {{ $customer->customer_occupation_id == 3 ? 'selected' : '' }}>Business</option>
                                     </select>
-                                    @error('customerOccupationId')
+                                    @error('customer_occupation_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -101,13 +101,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Service Type<span class="require_star">*</span></label>
-                                    <select class="form-control" name="serviceTypeId">
+                                    <select class="form-control" name="service_type_id">
                                         <option value="">-- Select Service Type --</option>
                                             @foreach($serviceTypes as $serviceType)
-                                            <option value="{{ $serviceType->serviceTypeId }}" {{ $serviceType->serviceTypeId == $customer->serviceTypeId ? 'selected': '' }}>{{ $serviceType->serviceName }}</option>
+                                            <option value="{{ $serviceType->service_type_id }}" {{ $serviceType->service_type_id == $customer->service_type_id ? 'selected': '' }}>{{ $serviceType->service_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('serviceTypeId')
+                                    @error('service_type_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -115,13 +115,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Service Package<span class="require_star">*</span></label>
-                                    <select class="form-control" name="packageId">
+                                    <select class="form-control" name="package_id">
                                         <option value="">-- Select Package --</option>
                                             @foreach($packageInformations as $packageInformation)
-                                            <option value="{{ $packageInformation->packageId }}" {{ $packageInformation->packageId == $customer->packageId ? 'selected': '' }}>{{ $packageInformation->packageName }}</option>
+                                            <option value="{{ $packageInformation->package_id }}" {{ $packageInformation->package_id == $customer->package_id ? 'selected': '' }}>{{ $packageInformation->package_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('packageId')
+                                    @error('package_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -129,13 +129,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Division<span class="require_star">*</span></label>
-                                    <select class="form-control" name="divisionId">
+                                    <select class="form-control" name="division_id">
                                         <option value="">-- Select Division --</option>
                                             @foreach($divisions as $division)
-                                            <option value="{{ $division->divisionId }}" {{ $division->divisionId == $customer->divisionId ? 'selected': '' }}>{{ $division->divisionName }}</option>
+                                            <option value="{{ $division->division_id }}" {{ $division->division_id == $customer->division_id ? 'selected': '' }}>{{ $division->division_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('divisionId')
+                                    @error('division_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -143,13 +143,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">District<span class="require_star">*</span></label>
-                                    <select class="form-control" name="districtId">
+                                    <select class="form-control" name="district_id">
                                         <option value="">-- Select District --</option>
                                             @foreach($districts as $district)
-                                            <option value="{{ $district->districtId }}" {{ $district->districtId == $customer->districtId ? 'selected': '' }}>{{ $district->districtName }}</option>
+                                            <option value="{{ $district->district_id }}" {{ $district->district_id == $customer->district_id ? 'selected': '' }}>{{ $district->district_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('districtId')
+                                    @error('district_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -157,13 +157,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Upazila<span class="require_star">*</span></label>
-                                    <select class="form-control" name="upazilaId">
+                                    <select class="form-control" name="upazila_id">
                                         <option value="">-- Select Upazila --</option>
                                             @foreach($upazilas as $upazila)
-                                            <option value="{{ $upazila->upazilaId }}" {{ $upazila->upazilaId == $customer->upazilaId ? 'selected': '' }}>{{ $upazila->upazilaName }}</option>
+                                            <option value="{{ $upazila->upazila_id }}" {{ $upazila->upazila_id == $customer->upazila_id ? 'selected': '' }}>{{ $upazila->upazila_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('upazilaId')
+                                    @error('upazila_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -171,13 +171,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Union<span class="require_star">*</span></label>
-                                    <select class="form-control" name="unionId">
+                                    <select class="form-control" name="union_id">
                                         <option value="">-- Select Union --</option>
                                             @foreach($unions as $union)
-                                            <option value="{{ $union->unionId }}" {{ $union->unionId == $customer->unionId ? 'selected': '' }}>{{ $union->unionName }}</option>
+                                            <option value="{{ $union->union_id }}" {{ $union->union_id == $customer->union_id ? 'selected': '' }}>{{ $union->union_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('unionId')
+                                    @error('union_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -185,13 +185,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Service Area<span class="require_star">*</span></label>
-                                    <select class="form-control" name="serviceAreaId">
+                                    <select class="form-control" name="service_area_id">
                                         <option value="">-- Select Service Area --</option>
                                             @foreach($serviceAreas as $serviceArea)
-                                                <option value="{{ $serviceArea->serviceAreaId }}" {{ $serviceArea->serviceAreaId == $customer->serviceAreaId ? 'selected': '' }}>{{ $serviceArea->serviceAreaName }}</option>
+                                                <option value="{{ $serviceArea->service_area_id }}" {{ $serviceArea->service_area_id == $customer->service_area_id ? 'selected': '' }}>{{ $serviceArea->service_area_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('serviceAreaId')
+                                    @error('service_area_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -199,13 +199,13 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Service Sub Area<span class="require_star">*</span></label>
-                                    <select class="form-control" name="serviceSubAreaId">
+                                    <select class="form-control" name="service_sub_area_id">
                                         <option value="">-- Select Service Sub Area --</option>
                                             @foreach($serviceSubAreas as $serviceSubArea)
-                                                <option value="{{ $serviceSubArea->serviceSubAreaId }}" {{ $serviceSubArea->serviceSubAreaId == $customer->serviceSubAreaId ? 'selected': '' }}>{{ $serviceSubArea->serviceSubAreaName }}</option>
+                                                <option value="{{ $serviceSubArea->service_sub_area_id }}" {{ $serviceSubArea->service_sub_area_id == $customer->service_sub_area_id ? 'selected': '' }}>{{ $serviceSubArea->service_sub_area_name }}</option>
                                             @endforeach
                                     </select>
-                                    @error('serviceSubAreaId')
+                                    @error('service_sub_area_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -213,7 +213,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Description<span class="require_star">*</span></label>
-                                    <textarea name="description" class="form-control" id="" rows="1" placeholder="Description">{{ $customer->description }}</textarea>
+                                    <textarea name="description" class="form-control" id="" rows="1">{{ $customer->description }}</textarea>
                                     @error('description')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -222,8 +222,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Post Code<span class="require_star">*</span></label>
-                                    <input type="text" name="postCode" class="form-control" placeholder="Post Code" value="{{ $customer->postCode }}">
-                                    @error('postCode')
+                                    <input type="text" name="post_code" class="form-control" placeholder="Post Code" value="{{ $customer->post_code }}">
+                                    @error('post_code')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -231,8 +231,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Road No<span class="require_star">*</span></label>
-                                    <input type="text" name="roadNo" class="form-control" placeholder="Road No" value="{{ $customer->roadNo }}">
-                                    @error('roadNo')
+                                    <input type="text" name="road_no" class="form-control" placeholder="Road No" value="{{ $customer->road_no }}">
+                                    @error('road_no')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -240,8 +240,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">House No<span class="require_star">*</span></label>
-                                    <input type="text" name="houseNo" class="form-control" placeholder="Road No" value="{{ $customer->houseNo }}">
-                                    @error('houseNo')
+                                    <input type="text" name="house_no" class="form-control" placeholder="Road No" value="{{ $customer->house_no }}">
+                                    @error('house_no')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -249,8 +249,8 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Floor No<span class="require_star">*</span></label>
-                                    <input type="text" name="floorNo" class="form-control" placeholder="Floor No" value="{{ $customer->floorNo }}">
-                                    @error('floorNo')
+                                    <input type="text" name="floor_no" class="form-control" placeholder="Floor No" value="{{ $customer->floor_no }}">
+                                    @error('floor_no')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -258,15 +258,15 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="form-control-label">Plate No<span class="require_star">*</span></label>
-                                    <input type="text" name="plateNo" class="form-control" placeholder="Floor No" value="{{ $customer->plateNo }}">
-                                    @error('plateNo')
+                                    <input type="text" name="plate_no" class="form-control" placeholder="Floor No" value="{{ $customer->plate_no }}">
+                                    @error('plate_no')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="form-control-label">Nid</label>
+                                    <label class="form-control-label">NID</label>
                                     <input type="text" name="nid" class="form-control" placeholder="Floor No" value="{{ $customer->nid }}">
                                 </div>
                             </div>

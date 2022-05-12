@@ -89,6 +89,7 @@ class CustomerController extends Controller{
         ]);
 
         (new CustomerInfoService())->updateCustomerInformation(
+            $request['customer_id'],
             $request['customer_name'],
             $request['father_name'],
             $request['email'],

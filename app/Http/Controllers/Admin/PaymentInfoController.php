@@ -102,4 +102,16 @@ class PaymentInfoController extends Controller{
         return redirect()->route('payment_new_form')->with($notification);
     }
 
+    public function deletePaymentInfoFormSubmit(Request $request){
+
+        $id = $request['modal_id'];
+
+        (new CustomerPaymentInfoService())->deletePaymentInformation($id);
+
+        $notification = array(
+            'messege' => 'Payment Delete Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
+    }
 }

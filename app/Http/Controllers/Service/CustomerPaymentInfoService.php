@@ -48,4 +48,9 @@ class CustomerPaymentInfoService extends Controller{
         ]);
     }
 
+    public function deletePaymentInformation($id){
+        return PaymentInfo::where('payment_id', $id)->update([
+            'payment_status' =>0
+        ]);
+    }
 }

@@ -79,4 +79,9 @@ class CustomerInfoService extends Controller{
             'updated_at' => Carbon::now()->toDateTimeString()
         ]);
     }
+    public function deleteCustomerInformation($id){
+        return Customer::where('customer_id', $id)->update([
+            'customer_status' => 0
+        ]);
+    }
 }

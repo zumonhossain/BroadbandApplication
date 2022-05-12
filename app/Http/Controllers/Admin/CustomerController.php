@@ -121,4 +121,16 @@ class CustomerController extends Controller{
         );
         return redirect()->route('customer_new_form')->with($notification);
     }
+
+    public function deleteCustomerFormSubmit(Request $request){
+        $id = $request['modal_id'];
+
+        (new CustomerInfoService())->deleteCustomerInformation($id);
+
+        $notification = array(
+            'messege' => 'Customer Delete Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('customer_new_form')->with($notification);
+    }
 }

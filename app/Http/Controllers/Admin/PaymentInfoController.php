@@ -77,4 +77,29 @@ class PaymentInfoController extends Controller{
         return redirect()->back()->with($notification);
     }
 
+    public function updatePaymentInfoFormSubmit(Request $request){
+        // dd($request->all());
+
+        $creator = Auth::user()->id;
+
+        (new CustomerPaymentInfoService())->updatePaymentInformation(
+            $request['payment_id'],
+            $request['customer_id'],
+            $request['amount'],
+            $request['payment_type_id'],
+            $request['payment_date'],
+            $request['collected_by_id'],
+            $request['transaction_no'],
+            $request['pay_month'],
+            $request['pay_year'],
+            $creator,
+        );
+
+        $notification = array(
+            'messege' => 'Payment Update Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('payment_new_form')->with($notification);
+    }
+
 }

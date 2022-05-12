@@ -33,4 +33,19 @@ class CustomerPaymentInfoService extends Controller{
         ]);
     }
 
+    public function updatePaymentInformation($id, $customer_id, $amount, $payment_type_id, $payment_date, $collected_by_id, $transaction_no, $pay_month, $pay_year, $creator){
+        return PaymentInfo::where('payment_id', $id)->update([
+            'customer_id' => $customer_id,
+            'amount' => $amount,
+            'payment_type_id' => $payment_type_id,
+            'payment_date' => $payment_date,
+            'collected_by_id' => $collected_by_id,
+            'transaction_no' => $transaction_no,
+            'pay_month' => $pay_month,
+            'pay_year' => $pay_year,
+            'creator' => $creator,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
+
 }

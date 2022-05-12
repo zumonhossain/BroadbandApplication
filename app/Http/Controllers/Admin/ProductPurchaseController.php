@@ -17,7 +17,7 @@ class ProductPurchaseController extends Controller{
         $productPurchases = (new CompanyInfoService())->getProductPurchaseInformation(null);
         return view('admin.product-purchase.product_purchase_add', compact('productPurchases', 'months'));
     }
-    
+
     public function insertProductPurchaseFormSubmit(Request $request){
         $this->validate($request, [
             'total_bandwith' => 'required',
@@ -45,5 +45,13 @@ class ProductPurchaseController extends Controller{
             'alert-type' => 'success',
         );
         return redirect()->back()->with($notification);
+    }
+
+    public function editProductPurchaseForm($id){
+        $years = (new CompanyInfoService())->getProductPurchaseInformation(null);
+        $months = (new CompanyInfoService())->getMonths(null);
+        $productPurchase = (new CompanyInfoService())->getProductPurchaseInformation($id);
+
+        return view('admin.product-purchase.product_purchase_edit', compact('productPurchase', 'months', 'years'));
     }
 }

@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\ServiceAreaController;
 use App\Http\Controllers\Admin\ServiceSubAreaController;
 use App\Http\Controllers\Admin\DailyCostController;
 use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\PaymentInfoController;
 
 /*
 |--------------------------------------------------------------------------

@@ -1,8 +1,11 @@
 @extends('layouts.admin')
+@section('title')
+    Customer Edit
+@endsection
 @section('content')
     <div class="row">
         <div class="col-lg-12">
-            <div class="card card-outline-info">
+            <div class="card card-outline-PaymentInfoControllerinfo">
                 <div class="card-header print_none">
                     <h4 class="user-registration"><i class="mdi mdi-account-circle"></i> Update Customer Information</h4>
                 </div>

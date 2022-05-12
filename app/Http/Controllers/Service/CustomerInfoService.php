@@ -49,4 +49,34 @@ class CustomerInfoService extends Controller{
             'created_at' => Carbon::now()->toDateTimeString()
         ]);
     }
+
+    public function updateCustomerInformation($id, $customer_name, $father_name, $email, $application_date, $phone_no1, $phone_no2, $connection_date, $connection_status_id, $customer_occupation_id, $service_type_id, $package_id, $division_id, $district_id, $upazila_id, $union_id, $service_area_id, $service_sub_area_id, $description, $post_code, $road_no, $house_no, $floor_no, $plate_no, $nid){
+        return Customer::where('customer_id', $id)->update([
+            'customer_name' => $customer_name,
+            'father_name' => $father_name,
+            'email' => $email,
+            'application_date' => $application_date,
+            'phone_no1' => $phone_no1,
+            'phone_no2' => $phone_no2,
+            'connection_date' => $connection_date,
+            'connection_status_id' => $connection_status_id,
+            'customer_occupation_id' => $customer_occupation_id,
+            'service_type_id' => $service_type_id,
+            'package_id' => $package_id,
+            'division_id' => $division_id,
+            'district_id' => $district_id,
+            'upazila_id' => $upazila_id,
+            'union_id' => $union_id,
+            'service_area_id' => $service_area_id,
+            'service_sub_area_id' => $service_sub_area_id,
+            'description' => $description,
+            'post_code' => $post_code,
+            'road_no' => $road_no,
+            'house_no' => $house_no,
+            'floor_no' => $floor_no,
+            'plate_no' => $plate_no,
+            'nid' => $nid,
+            'updated_at' => Carbon::now()->toDateTimeString()
+        ]);
+    }
 }

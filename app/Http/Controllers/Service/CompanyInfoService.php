@@ -565,4 +565,20 @@ class CompanyInfoService extends Controller{
             'created_at' => Carbon::now()->toDateTimeString(),
         ]);
     }
+
+    public function updateProductPurchaseInformation($id, $total_bandwith, $facebook_bandwith, $youtube_bandwith, $others_bandwith, $total_amount, $purchase_form_id, $month_id, $year, $paid_amount, $creator){
+        return ProductPurchase::where('product_purchase_id', $id)->update([
+            'total_bandwith' => $total_bandwith,
+            'facebook_bandwith' => $facebook_bandwith,
+            'youtube_bandwith' => $youtube_bandwith,
+            'others_bandwith' => $others_bandwith,
+            'total_amount' => $total_amount,
+            'purchase_form_id' => $purchase_form_id,
+            'month_id' => $month_id,
+            'year' => $year,
+            'paid_amount' => $paid_amount,
+            'creator' => $creator,
+            'updated_at' => Carbon::now()->toDateTimeString(),
+        ]);
+    }
 }

@@ -54,4 +54,35 @@ class ProductPurchaseController extends Controller{
 
         return view('admin.product-purchase.product_purchase_edit', compact('productPurchase', 'months', 'years'));
     }
+
+    public function updateProductPurchaseFormSubmit(Request $request){
+        $this->validate($request, [
+            'total_bandwith' => 'required',
+        ], [
+            'total_bandwith.required' => 'Please enter total bandwith!',
+        ]);
+        
+        // dd($request->all());
+        $creator = Auth::user()->id;
+
+        (new CompanyInfoService())->updateProductPurchaseInformation(
+            $request['product_purchase_id'],
+            $request['total_bandwith'],
+            $request['facebook_bandwith'],
+            $request['youtube_bandwith'],
+            $request['others_bandwith'],
+            $request['total_amount'],
+            $request['purchase_form_id'],
+            $request['month_id'],
+            $request['year'],
+            $request['paid_amount'],
+            $creator,
+        );
+
+        $notification = array(
+            'messege' => 'Product Purchase Update Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('product_purchase_new_form')->with($notification);
+    }
 }

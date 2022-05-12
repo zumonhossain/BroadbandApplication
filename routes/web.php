@@ -124,7 +124,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('customer/edit-customer/{id}', [CustomerController::class, 'editCustomerForm'])->name('customer_edit_form');
     Route::post('customer/update-customer', [CustomerController::class, 'updateCustomerFormSubmit'])->name('customer_update_form');
     Route::post('customer/delete-customer', [CustomerController::class, 'deleteCustomerFormSubmit'])->name('customer_delete_form');
-    Route::post('customer/search-customer', [CustomerController::class, 'searchCustomerrmation'])->name('search_customer_information');
+
+    // Payment
+    Route::get('payment/new-payment-form', [PaymentInfoController::class, 'addNewPaymentInfoForm'])->name('payment_new_form');
+    Route::post('payment/insert-new-payment', [PaymentInfoController::class, 'insertPaymentInfoFormSubmit'])->name('payment_insert_form');
+    Route::get('payment/edit-payment/{id}', [PaymentInfoController::class, 'editPaymentInfoForm'])->name('payment_edit_form');
+    Route::post('payment/update-payment', [PaymentInfoController::class, 'updatePaymentInfoFormSubmit'])->name('payment_update_form');
+    Route::post('payment/delete-payment', [PaymentInfoController::class, 'deletePaymentInfoFormSubmit'])->name('payment_delete_form');
 
 
 });

@@ -24,7 +24,7 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-md-3 col-form-label text-right">Service Name<span class="require_star">*</span></label>
+                            <label class="col-md-3 col-form-label text-right">Package Name<span class="require_star">*</span></label>
                             <div class="col-md-7">
                                 <input type="text" name="package_name" class="form-control" placeholder="Package Name" value="{{ old('package_name') }}">
                                 @error('package_name')
@@ -35,19 +35,19 @@
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Bandwidth</label>
                             <div class="col-md-7">
-                                <input type="text" name="package_bandwidth" class="form-control" placeholder="Package Name" value="{{ old('package_bandwidth') }}">
+                                <input type="text" name="package_bandwidth" class="form-control" placeholder="Bandwidth" value="{{ old('package_bandwidth') }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Price</label>
                             <div class="col-md-7">
-                                <input type="text" name="package_price" class="form-control" placeholder="Package Name" value="{{ old('package_price') }}">
+                                <input type="text" name="package_price" class="form-control" placeholder="Price" value="{{ old('package_price') }}">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label text-right">Package Code</label>
                             <div class="col-md-7">
-                                <input type="text" name="package_code" class="form-control" placeholder="Package Name" value="{{ old('package_code') }}">
+                                <input type="text" name="package_code" class="form-control" placeholder="Package Code" value="{{ old('package_code') }}">
                             </div>
                         </div>
                         <div class="text-center">

@@ -56,7 +56,7 @@
                             <label class="col-md-3 col-form-label text-right">Year</label>
                             <div class="col-md-7">
                                 <select class="form-control" name="year">
-                                    <option value="{{date('Y')}}" >{{date('Y')}}</option>
+                                    <option value="{{ $dailyCost->year }}" >{{$dailyCost->year}}</option>
                                     @foreach(range(date('Y')+1, date('Y')-1) as $y)
                                         <option value="{{$y}}" {{$y}} >{{$y}}</option>
                                     @endforeach

@@ -84,4 +84,13 @@ class CustomerInfoService extends Controller{
             'customer_status' => 0
         ]);
     }
+
+    public function searchCustomerInfo(Request $request){
+        $customer = (new CustomerInfoService())->searchCustomerInformation($request->value, $request->value_type);
+        if ($customer) {
+            return  response()->json(['data' => $customer, 'success' => 'true', 'status_code' => 200]);
+        } else {
+            return response()->json(['success' => 'false', 'status_code' => '401', 'error' => 'error', 'message' => $validator->errors()]);
+        }
+    }
 }

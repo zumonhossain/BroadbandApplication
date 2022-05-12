@@ -581,4 +581,10 @@ class CompanyInfoService extends Controller{
             'updated_at' => Carbon::now()->toDateTimeString(),
         ]);
     }
+
+    public function deleteProductPurchaseInformation($id){
+        return ProductPurchase::where('product_purchase_id', $id)->update([
+            'isActive' => 0,
+        ]);
+    }
 }

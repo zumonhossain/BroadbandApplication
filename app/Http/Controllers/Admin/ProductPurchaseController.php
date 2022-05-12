@@ -54,7 +54,7 @@ class ProductPurchaseController extends Controller{
 
         return view('admin.product-purchase.product_purchase_edit', compact('productPurchase', 'months', 'years'));
     }
-
+    
     public function updateProductPurchaseFormSubmit(Request $request){
         $this->validate($request, [
             'total_bandwith' => 'required',
@@ -84,5 +84,16 @@ class ProductPurchaseController extends Controller{
             'alert-type' => 'success',
         );
         return redirect()->route('product_purchase_new_form')->with($notification);
+    }
+
+    public function deleteProductPurchaseFormSubmit(Request $request){
+        $id = $request['modal_id'];
+        (new CompanyInfoService())->deleteProductPurchaseInformation($id);
+
+        $notification = array(
+            'messege' => 'Product Purchase Delete Success!',
+            'alert-type' => 'success',
+        );
+        return redirect()->back()->with($notification);
     }
 }

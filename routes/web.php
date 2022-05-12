@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\ServiceSubAreaController;
 use App\Http\Controllers\Admin\DailyCostController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\PaymentInfoController;
+use App\Http\Controllers\Admin\ProductPurchaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -131,6 +132,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('payment/edit-payment/{id}', [PaymentInfoController::class, 'editPaymentInfoForm'])->name('payment_edit_form');
     Route::post('payment/update-payment', [PaymentInfoController::class, 'updatePaymentInfoFormSubmit'])->name('payment_update_form');
     Route::post('payment/delete-payment', [PaymentInfoController::class, 'deletePaymentInfoFormSubmit'])->name('payment_delete_form');
+
+    // ProductPurchase
+    Route::get('product/purchase/new-product-purchase-form', [ProductPurchaseController::class, 'addNewProductPurchaseForm'])->name('product_purchase_new_form');
+    Route::post('Product/purchase/insert-new-product-purchase', [ProductPurchaseController::class, 'insertProductPurchaseFormSubmit'])->name('product_purchase_insert_form');
+    Route::get('product/purchase/edit-product-purchase/{id}', [ProductPurchaseController::class, 'editProductPurchaseForm'])->name('product_purchase_edit_form');
+    Route::post('product/purchase/update-product-purchase', [ProductPurchaseController::class, 'updateProductPurchaseFormSubmit'])->name('product_purchase_update_form');
+    Route::post('product/purchase/delete-product-purchase', [ProductPurchaseController::class, 'deleteProductPurchaseFormSubmit'])->name('product_purchase_delete_form');
 
 
 });

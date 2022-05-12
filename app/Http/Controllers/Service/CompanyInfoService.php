@@ -19,6 +19,7 @@ use App\Models\ServiceSubArea;
 use App\Models\DebitType;
 use App\Models\DailyCost;
 use App\Models\ConnectionStatus;
+use App\Models\ProductPurchase;
 use Carbon\Carbon;
 use Str;
 
@@ -536,6 +537,32 @@ class CompanyInfoService extends Controller{
     public function deleteDailyCostInformation($id){
         return DailyCost::where('daily_cost_id', $id)->update([
             'daily_cost_status' =>0
+        ]);
+    }
+
+    // Product Purchase
+    public function getProductPurchaseInformation($id){
+        if ($id == null) {
+            return ProductPurchase::where('isActive', 1)->get();
+        } else {
+            return ProductPurchase::where('product_purchase_id', $id)->where('isActive', 1)->first();
+        }
+    }
+
+    public function insertProductPurchaseInformation($total_bandwith, $facebook_bandwith, $youtube_bandwith, $others_bandwith, $total_amount, $purchase_form_id, $month_id, $year, $paid_amount, $creator){
+
+        return ProductPurchase::insertGetId([
+            'total_bandwith' => $total_bandwith,
+            'facebook_bandwith' => $facebook_bandwith,
+            'youtube_bandwith' => $youtube_bandwith,
+            'others_bandwith' => $others_bandwith,
+            'total_amount' => $total_amount,
+            'purchase_form_id' => $purchase_form_id,
+            'month_id' => $month_id,
+            'year' => $year,
+            'paid_amount' => $paid_amount,
+            'creator' => $creator,
+            'created_at' => Carbon::now()->toDateTimeString(),
         ]);
     }
 }

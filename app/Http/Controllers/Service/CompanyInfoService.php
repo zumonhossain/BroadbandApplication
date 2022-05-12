@@ -18,6 +18,7 @@ use App\Models\ServiceArea;
 use App\Models\ServiceSubArea;
 use App\Models\DebitType;
 use App\Models\DailyCost;
+use App\Models\ConnectionStatus;
 use Carbon\Carbon;
 use Str;
 
@@ -37,18 +38,27 @@ class CompanyInfoService extends Controller{
     //user
     public function getUserInformation($id){
         if ($id == null) {
-            return  $users = User::all();
+            return User::all();
         } else {
-            return  $users = User::where('id', $id)->first();
+            return User::where('id', $id)->first();
         }
     }
 
-    //Debit Type
+    // Debit Type
     public function getDebitTypeInformation($id){
         if ($id == null) {
-            return  $debitTypes = DebitType::all();
+            return DebitType::all();
         } else {
-            return  $debitTypes = DebitType::where('id', $id)->first();
+            return DebitType::where('id', $id)->first();
+        }
+    }
+
+    // Connection Status
+    public function getConnectionStatusInformation($id){
+        if ($id == null) {
+            return ConnectionStatus::all();
+        } else {
+            return ConnectionStatus::where('id', $id)->first();
         }
     }
 

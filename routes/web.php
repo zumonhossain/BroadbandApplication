@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\UnionController;
 use App\Http\Controllers\Admin\ServiceAreaController;
 use App\Http\Controllers\Admin\ServiceSubAreaController;
 use App\Http\Controllers\Admin\DailyCostController;
+use App\Http\Controllers\Admin\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -115,6 +116,14 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('admin/daily/cost/edit-daily-cost/{id}', [DailyCostController::class, 'editDailyCostForm'])->name('daily_cost_edit_form');
     Route::post('admin/daily/cost/update-daily-cost', [DailyCostController::class, 'updateDailyCostFormSubmit'])->name('daily_cost_update_form');
     Route::post('admin/daily/cost/delete-daily-cost', [DailyCostController::class, 'deleteDailyCostFormSubmit'])->name('daily_cost_delete_form');
+
+    // Customer
+    Route::get('customer/new-customer-form', [CustomerController::class, 'addNewCustomerForm'])->name('customer_new_form');
+    Route::post('customer/insert-new-customer', [CustomerController::class, 'insertCustomerFormSubmit'])->name('customer_insert_form');
+    Route::get('customer/edit-customer/{id}', [CustomerController::class, 'editCustomerForm'])->name('customer_edit_form');
+    Route::post('customer/update-customer', [CustomerController::class, 'updateCustomerFormSubmit'])->name('customer_update_form');
+    Route::post('customer/delete-customer', [CustomerController::class, 'deleteCustomerFormSubmit'])->name('customer_delete_form');
+    Route::post('customer/search-customer', [CustomerController::class, 'searchCustomerrmation'])->name('search_customer_information');
 
 
 });

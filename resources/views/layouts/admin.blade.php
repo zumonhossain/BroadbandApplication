@@ -127,6 +127,9 @@
                             <a class="waves-effect waves-dark" href="{{ route('daily_cost_new_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Daily Cost</span></a>
                         </li>
                         <li>
+                            <a class="waves-effect waves-dark" href="{{ route('customer_new_form') }}"><i class="mdi mdi-home"></i><span class="hide-menu">Customer</span></a>
+                        </li>
+                        <li>
                             <a class="waves-effect waves-dark" href="{{ url('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="mdi mdi-power"></i><span class="hide-menu">Logout</span></a>
                         </li>
                     </ul>

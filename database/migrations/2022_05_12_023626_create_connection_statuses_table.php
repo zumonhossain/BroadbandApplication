@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('connection_statuses', function (Blueprint $table) {
             $table->bigIncrements('connection_status_id');
-            $table->string('connection_name');
+            $table->string('connection_status_name');
             $table->boolean('connection_status')->default(1);
             $table->timestamps();
         });
@@ -25,19 +25,19 @@ return new class extends Migration
 
         DB::table('connection_statuses')->insert(
             array(
-                'connection_name' => 'Active'
+                'connection_status_name' => 'Active'
             )
         );
 
         DB::table('connection_statuses')->insert(
             array(
-                'connection_name' => 'inActive'
+                'connection_status_name' => 'inActive'
             )
         );
 
         DB::table('connection_statuses')->insert(
             array(
-                'connection_name' => 'Disconnect'
+                'connection_status_name' => 'Disconnect'
             )
         );
     }

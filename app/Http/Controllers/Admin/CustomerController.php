@@ -66,4 +66,18 @@ class CustomerController extends Controller{
         );
         return redirect()->back()->with($notification);
     }
+
+    public function editCustomerForm($id){
+        $connectionStatus = (new CompanyInfoService())->getConnectionStatusInformation(null);
+        $serviceSubAreas = (new CompanyInfoService())->getServiceSubAreaInformation(null);
+        $serviceAreas = (new CompanyInfoService())->getServiceAreaInformation(null);
+        $unions = (new CompanyInfoService())->getUnionInformation(null);
+        $upazilas = (new CompanyInfoService())->getUpazilaInformation(null);
+        $districts = (new CompanyInfoService())->getDistrictInformation(null);
+        $divisions = (new CompanyInfoService())->getDivisionInformation(null);
+        $packageInformations = (new CompanyInfoService())->getPackageInformation(null);
+        $serviceTypes = (new CompanyInfoService())->getServiceTypeInformation(null);
+        $customer = (new CustomerInfoService())->getCustomerInformation($id);
+        return view('admin.customer.customer_edit', compact('customer','serviceTypes','packageInformations','divisions','districts','upazilas','unions','serviceAreas','serviceSubAreas','connectionStatus'));
+    }
 }

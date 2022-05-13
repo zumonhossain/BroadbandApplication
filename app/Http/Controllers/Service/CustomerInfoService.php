@@ -85,12 +85,17 @@ class CustomerInfoService extends Controller{
         ]);
     }
 
-    public function searchCustomerInfo(Request $request){
-        $customer = (new CustomerInfoService())->searchCustomerInformation($request->value, $request->value_type);
-        if ($customer) {
-            return  response()->json(['data' => $customer, 'success' => 'true', 'status_code' => 200]);
+    // Search Customer Name, Id, Phone
+    public function searchCustomerInformation($searchingValue, $searchingValeType)
+    {
+        if ($searchingValeType == 'phone_no') {
+            return  Customer::where('phone_no1', $searchingValue)->get();
+        } else if ($searchingValeType == 'customer_name') {
+            return  Customer::where('customer_name', $searchingValue)->get();
+        } else if ($searchingValeType == 'id') {
+            return  Customer::where('customer_id', $searchingValue)->get();
         } else {
-            return response()->json(['success' => 'false', 'status_code' => '401', 'error' => 'error', 'message' => $validator->errors()]);
+            Customer::where('customer_id', $searchingValue)->get();
         }
     }
 }

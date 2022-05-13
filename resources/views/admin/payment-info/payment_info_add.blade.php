@@ -11,7 +11,84 @@
                 </div>
                 <div class="card-body">
 
+                    <div class="searchBy">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h2 class="text-right pt-4">Search By</h2>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <label class="custom-control custom-radio">
+                                            <input id="radio1" name="radio" type="radio"   value="customer_name" checked class="custom-control-input">
+                                            
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Name</span>
+                                        </label>
+                                        <label class="custom-control custom-radio">
+                                            <input id="radio2" name="radio" type="radio" value ="phone_no"  class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">Phone Number</span>
+                                        </label>
+                                        <label class="custom-control custom-radio">
+                                            <input id="radio2" name="radio" type="radio" value ="id" class="custom-control-input">
+                                            <span class="custom-control-indicator"></span>
+                                            <span class="custom-control-description">ID</span>
+                                        </label>
+                                        <div class="pt-2">
+                                            <input class="form-control" placeholder="Search" type="text" name="customer_info" id="customer_info">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3 d-flex align-items-center">
+                                <button class="btn btn-info" onClick="searchEmployeeDetails()">Search</button>
+                            </div><br>
+                        </div>
+                    </div>
 
+                    <div id="showCustomerDetails" class="d-none" style="">
+                        <div class="row">
+                            <div class="col-md-2"></div>
+                            <div class="col-md-8">
+                                <table class="table table-bordered table-striped table-hover custom_table">
+                                    <tr>
+                                        <td>ID:</td>
+                                        <td>:</td>
+                                        <td><span id="show_customer_id" class="customer"></span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td>:</td>
+                                        <td><span id="show_customer_name" class="customer"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td>:</td>
+                                        <td><span id="show_customer_address" class="customer"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Phone Number:</td>
+                                        <td>:</td>
+                                        <td><span id="show_customer_phoneNo1" class="customer"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Connection Status:</td>
+                                        <td><span id="show_customer_connection_status" class="customer"></span></td>
+                                        <td colspan="3">Active</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Image:</td>
+                                        <td>:</td>
+                                        <td>
+                                            <img height="100" width="100" src="{{asset('uploads/company-profile/avatar.png')}}"/>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
 
                     <div class="mt-5">
                         <form action="{{ route('payment_insert_form') }}" method="POST" class="form-horizontal">
@@ -189,4 +266,38 @@
 
 
 
+
+    <!-- ================= Search Employee Details ================= -->
+    <script type="text/javascript">
+        function searchEmployeeDetails() {
+            var value_type = $(".custom-control-input:checked").val();
+            var value = $("input[id='customer_info']").val();
+        
+            // alert('hhh');
+            $.ajax({
+                type: 'POST',
+                url: "{{ route('search_customer_information') }}",
+                data: {
+                value: value,
+                value_type: value_type
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.status_code != 200) {
+                        alert(response.status_code);
+                    }else{
+                        $("#showCustomerDetails").removeClass("d-none").addClass("d-block");
+                        var customer = response.data[0]
+                        // alert();
+                        $("input[id='customer_id']").val(customer.customer_id);
+                        $("span[id='show_customer_id']").text(customer.customer_id);
+                        $("span[id='show_customer_name']").text(customer.customer_name);
+                        $("span[id='show_customer_phoneNo1']").text(customer.phone_no1);
+                        var address = customer.description + ',' +customer.post_code + ',' +customer.road_no+ ',' +customer.house_no+ ',' +customer.floor_no + ',' +customer.plate_no 
+                        $("span[id='show_customer_address']").text(address);
+                    }
+                }
+            });
+        }
+  </script>
 @endsection

@@ -126,6 +126,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::post('customer/update-customer', [CustomerController::class, 'updateCustomerFormSubmit'])->name('customer_update_form');
     Route::post('customer/delete-customer', [CustomerController::class, 'deleteCustomerFormSubmit'])->name('customer_delete_form');
 
+    Route::post('admin/customer/search-customer', [CustomerController::class, 'searchCustomerInformation'])->name('search_customer_information');
+    
     // Payment
     Route::get('payment/new-payment-form', [PaymentInfoController::class, 'addNewPaymentInfoForm'])->name('payment_new_form');
     Route::post('payment/insert-new-payment', [PaymentInfoController::class, 'insertPaymentInfoFormSubmit'])->name('payment_insert_form');

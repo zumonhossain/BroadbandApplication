@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Service\CustomerInfoService;
 use App\Http\Controllers\Service\CompanyInfoService;
 use Illuminate\Http\Request;
+use Validator;
+use Exception;
 
 class CustomerController extends Controller{
     public function __construct(){
@@ -133,5 +135,14 @@ class CustomerController extends Controller{
             'alert-type' => 'success',
         );
         return redirect()->route('customer_new_form')->with($notification);
+    }
+
+    public function searchCustomerInformation(Request $request){
+        $customer = (new CustomerInfoService())->searchCustomerInformation($request->value, $request->value_type);
+        if ($customer) {
+            return  response()->json(['data' => $customer, 'success' => 'true', 'status_code' => 200]);
+        } else {
+            return response()->json(['success' => 'false', 'status_code' => '401', 'error' => 'error', 'message' => $validator->errors()]);
+        }
     }
 }
